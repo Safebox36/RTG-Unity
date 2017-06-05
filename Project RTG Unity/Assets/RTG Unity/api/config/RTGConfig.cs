@@ -4,8 +4,8 @@
 
     //import net.minecraft.block.state.IBlockState;
     //import net.minecraft.init.Blocks;
-    
-    using  property;
+
+    using property;
 
     public class RTGConfig : Config
     {
@@ -15,263 +15,263 @@
 
         // These constants are used as fallbacks during terrain shadowing, in case the user enters an invalid block ID.
         public static readonly string DEFAULT_SHADOW_STONE_BLOCK_ID = "minecraft:stained_hardened_clay";
-    public static readonly int DEFAULT_SHADOW_STONE_BLOCK_META = 9;
+        public static readonly int DEFAULT_SHADOW_STONE_BLOCK_META = 9;
         public static readonly string DEFAULT_SHADOW_DESERT_BLOCK_ID = "minecraft:stained_hardened_clay";
-    public static readonly int DEFAULT_SHADOW_DESERT_BLOCK_META = 0;
+        public static readonly int DEFAULT_SHADOW_DESERT_BLOCK_META = 0;
 
         // These constants are used as fallbacks when generating volcanoes, in case the user enters an invalid block ID.
-        public static readonly IBlockState DEFAULT_VOLCANO_BLOCK = Blocks.OBSIDIAN.getDefaultState();
-    public static readonly IBlockState DEFAULT_VOLCANO_MIX1_BLOCK = Blocks.COBBLESTONE.getDefaultState();
-    public static readonly IBlockState DEFAULT_VOLCANO_MIX2_BLOCK = Blocks.GRAVEL.getDefaultState();
-    public static readonly IBlockState DEFAULT_VOLCANO_MIX3_BLOCK = Blocks.COAL_BLOCK.getDefaultState();
+        //public static readonly IBlockState DEFAULT_VOLCANO_BLOCK = Blocks.OBSIDIAN.getDefaultState();
+        //public static readonly IBlockState DEFAULT_VOLCANO_MIX1_BLOCK = Blocks.COBBLESTONE.getDefaultState();
+        //public static readonly IBlockState DEFAULT_VOLCANO_MIX2_BLOCK = Blocks.GRAVEL.getDefaultState();
+        //public static readonly IBlockState DEFAULT_VOLCANO_MIX3_BLOCK = Blocks.COAL_BLOCK.getDefaultState();
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Bedrock
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Bedrock
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyInt FLAT_BEDROCK_LAYERS;
-    public readonly ConfigPropertyString BEDROCK_BLOCK_ID;
-    public readonly ConfigPropertyInt BEDROCK_BLOCK_BYTE;
+        public readonly ConfigPropertyInt FLAT_BEDROCK_LAYERS;
+        public readonly ConfigPropertyString BEDROCK_BLOCK_ID;
+        public readonly ConfigPropertyInt BEDROCK_BLOCK_BYTE;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Biomes
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Biomes
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_RTG_BIOME_DECORATIONS;
-    public readonly ConfigPropertyBoolean ENABLE_RTG_BIOME_SURFACES;
-    public readonly ConfigPropertyInt PATCH_BIOME_ID;
+        public readonly ConfigPropertyBoolean ENABLE_RTG_BIOME_DECORATIONS;
+        public readonly ConfigPropertyBoolean ENABLE_RTG_BIOME_SURFACES;
+        public readonly ConfigPropertyInt PATCH_BIOME_ID;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Boulders
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Boulders
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_COBBLESTONE_BOULDERS;
-    public readonly ConfigPropertyInt COBBLESTONE_BOULDER_CHANCE;
-    public readonly ConfigPropertyBoolean ENABLE_UBC_BOULDERS;
+        public readonly ConfigPropertyBoolean ENABLE_COBBLESTONE_BOULDERS;
+        public readonly ConfigPropertyInt COBBLESTONE_BOULDER_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_UBC_BOULDERS;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Caves
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Caves
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_CAVE_MODIFICATIONS;
-    public readonly ConfigPropertyBoolean ENABLE_CAVES;
-    public readonly ConfigPropertyInt CAVE_DENSITY;
-    public readonly ConfigPropertyInt CAVE_FREQUENCY;
+        public readonly ConfigPropertyBoolean ENABLE_CAVE_MODIFICATIONS;
+        public readonly ConfigPropertyBoolean ENABLE_CAVES;
+        public readonly ConfigPropertyInt CAVE_DENSITY;
+        public readonly ConfigPropertyInt CAVE_FREQUENCY;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Debugging
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Debugging
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_DEBUGGING;
-    public readonly ConfigPropertyBoolean CRASH_ON_STRUCTURE_EXCEPTIONS;
+        public readonly ConfigPropertyBoolean ENABLE_DEBUGGING;
+        public readonly ConfigPropertyBoolean CRASH_ON_STRUCTURE_EXCEPTIONS;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Dunes
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Dunes
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyInt DUNE_HEIGHT;
+        public readonly ConfigPropertyInt DUNE_HEIGHT;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Dungeons
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Dungeons
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean GENERATE_DUNGEONS;
-    public readonly ConfigPropertyInt DUNGEON_FREQUENCY;
+        public readonly ConfigPropertyBoolean GENERATE_DUNGEONS;
+        public readonly ConfigPropertyInt DUNGEON_FREQUENCY;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Flowing liquids
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Flowing liquids
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_FLOWING_LIQUID_MODIFICATIONS;
-    public readonly ConfigPropertyInt FLOWING_LAVA_CHANCE;
-    public readonly ConfigPropertyInt FLOWING_WATER_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_FLOWING_LIQUID_MODIFICATIONS;
+        public readonly ConfigPropertyInt FLOWING_LAVA_CHANCE;
+        public readonly ConfigPropertyInt FLOWING_WATER_CHANCE;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // GUI
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // GUI
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_WORLD_TYPE_NOTIFICATION_SCREEN;
+        public readonly ConfigPropertyBoolean ENABLE_WORLD_TYPE_NOTIFICATION_SCREEN;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Lakes (Scenic)
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Lakes (Scenic)
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    private readonly ConfigPropertyFloat LAKE_SIZE_MULTIPLIER; // This is private because we want a transformed version.
-    public readonly ConfigPropertyFloat LAKE_FREQUENCY_MULTIPLIER;
-    public readonly ConfigPropertyFloat LAKE_SHORE_BENDINESS_MULTIPLIER;
-    public readonly ConfigPropertyInt SCENIC_LAKE_BIOME_ID;
-    public readonly ConfigPropertyInt SCENIC_FROZEN_LAKE_BIOME_ID;
+        private readonly ConfigPropertyFloat LAKE_SIZE_MULTIPLIER; // This is private because we want a transformed version.
+        public readonly ConfigPropertyFloat LAKE_FREQUENCY_MULTIPLIER;
+        public readonly ConfigPropertyFloat LAKE_SHORE_BENDINESS_MULTIPLIER;
+        public readonly ConfigPropertyInt SCENIC_LAKE_BIOME_ID;
+        public readonly ConfigPropertyInt SCENIC_FROZEN_LAKE_BIOME_ID;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Lakes (Surface)
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Lakes (Surface)
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_WATER_SURFACE_LAKES;
-    public readonly ConfigPropertyInt WATER_SURFACE_LAKE_CHANCE;
-    public readonly ConfigPropertyBoolean ENABLE_LAVA_SURFACE_LAKES;
-    public readonly ConfigPropertyInt LAVA_SURFACE_LAKE_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_WATER_SURFACE_LAKES;
+        public readonly ConfigPropertyInt WATER_SURFACE_LAKE_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_LAVA_SURFACE_LAKES;
+        public readonly ConfigPropertyInt LAVA_SURFACE_LAKE_CHANCE;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Lakes (Underground)
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Lakes (Underground)
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_WATER_UNDERGROUND_LAKES;
-    public readonly ConfigPropertyInt WATER_UNDERGROUND_LAKE_CHANCE;
-    public readonly ConfigPropertyBoolean ENABLE_LAVA_UNDERGROUND_LAKES;
-    public readonly ConfigPropertyInt LAVA_UNDERGROUND_LAKE_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_WATER_UNDERGROUND_LAKES;
+        public readonly ConfigPropertyInt WATER_UNDERGROUND_LAKE_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_LAVA_UNDERGROUND_LAKES;
+        public readonly ConfigPropertyInt LAVA_UNDERGROUND_LAKE_CHANCE;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Mineshafts
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Mineshafts
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean GENERATE_MINESHAFTS;
+        public readonly ConfigPropertyBoolean GENERATE_MINESHAFTS;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Ocean monuments
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Ocean monuments
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_OCEAN_MONUMENT_MODIFICATIONS;
-    public readonly ConfigPropertyBoolean GENERATE_OCEAN_MONUMENTS;
-    public readonly ConfigPropertyInt OCEAN_MONUMENT_SPACING;
-    public readonly ConfigPropertyInt OCEAN_MONUMENT_SEPARATION;
+        public readonly ConfigPropertyBoolean ENABLE_OCEAN_MONUMENT_MODIFICATIONS;
+        public readonly ConfigPropertyBoolean GENERATE_OCEAN_MONUMENTS;
+        public readonly ConfigPropertyInt OCEAN_MONUMENT_SPACING;
+        public readonly ConfigPropertyInt OCEAN_MONUMENT_SEPARATION;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Ore gen
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Ore gen
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean GENERATE_ORE_ANDESITE;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_COAL;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_DIAMOND;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_DIORITE;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_DIRT;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_EMERALD;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_GOLD;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_GRANITE;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_GRAVEL;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_IRON;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_LAPIS;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_REDSTONE;
-    public readonly ConfigPropertyBoolean GENERATE_ORE_SILVERFISH;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_ANDESITE;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_COAL;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_DIAMOND;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_DIORITE;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_DIRT;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_EMERALD;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_GOLD;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_GRANITE;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_GRAVEL;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_IRON;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_LAPIS;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_REDSTONE;
+        public readonly ConfigPropertyBoolean GENERATE_ORE_SILVERFISH;
 
-    public readonly ConfigPropertyBoolean ALLOW_ORE_GEN_EVENT_CANCELLATION;
+        public readonly ConfigPropertyBoolean ALLOW_ORE_GEN_EVENT_CANCELLATION;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Plateaus
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Plateaus
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyString PLATEAU_GRADIENT_BLOCK_ID;
-    public readonly ConfigPropertyString MESA_BRYCE_GRADIENT_STRING;
-    public readonly ConfigPropertyString MESA_GRADIENT_STRING;
-    public readonly ConfigPropertyString SAVANNA_GRADIENT_STRING;
-    public readonly ConfigPropertyString PLATEAU_BLOCK_ID;
-    public readonly ConfigPropertyInt PLATEAU_BLOCK_META;
-    public readonly ConfigPropertyBoolean STONE_SAVANNAS;
+        public readonly ConfigPropertyString PLATEAU_GRADIENT_BLOCK_ID;
+        public readonly ConfigPropertyString MESA_BRYCE_GRADIENT_STRING;
+        public readonly ConfigPropertyString MESA_GRADIENT_STRING;
+        public readonly ConfigPropertyString SAVANNA_GRADIENT_STRING;
+        public readonly ConfigPropertyString PLATEAU_BLOCK_ID;
+        public readonly ConfigPropertyInt PLATEAU_BLOCK_META;
+        public readonly ConfigPropertyBoolean STONE_SAVANNAS;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Ravines
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Ravines
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_RAVINE_MODIFICATIONS;
-    public readonly ConfigPropertyBoolean ENABLE_RAVINES;
-    public readonly ConfigPropertyInt RAVINE_FREQUENCY;
+        public readonly ConfigPropertyBoolean ENABLE_RAVINE_MODIFICATIONS;
+        public readonly ConfigPropertyBoolean ENABLE_RAVINES;
+        public readonly ConfigPropertyInt RAVINE_FREQUENCY;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Rivers
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Rivers
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    private readonly ConfigPropertyFloat RIVER_SIZE_MULTIPLIER; // This is private because we want a transformed version.
-    public readonly ConfigPropertyFloat RIVER_FREQUENCY_MULTIPLIER;
-    public readonly ConfigPropertyFloat RIVER_BENDINESS_MULTIPLIER;
-    public readonly ConfigPropertyFloat RIVER_CUT_OFF_SCALE;
-    public readonly ConfigPropertyFloat RIVER_CUT_OFF_AMPLITUDE;
-    public readonly ConfigPropertyBoolean ENABLE_LUSH_RIVER_BANK_DECORATIONS_IN_HOT_BIOMES;
-    public readonly ConfigPropertyBoolean ENABLE_LUSH_RIVER_BANK_SURFACES_IN_HOT_BIOMES;
+        private readonly ConfigPropertyFloat RIVER_SIZE_MULTIPLIER; // This is private because we want a transformed version.
+        public readonly ConfigPropertyFloat RIVER_FREQUENCY_MULTIPLIER;
+        public readonly ConfigPropertyFloat RIVER_BENDINESS_MULTIPLIER;
+        public readonly ConfigPropertyFloat RIVER_CUT_OFF_SCALE;
+        public readonly ConfigPropertyFloat RIVER_CUT_OFF_AMPLITUDE;
+        public readonly ConfigPropertyBoolean ENABLE_LUSH_RIVER_BANK_DECORATIONS_IN_HOT_BIOMES;
+        public readonly ConfigPropertyBoolean ENABLE_LUSH_RIVER_BANK_SURFACES_IN_HOT_BIOMES;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Saplings
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Saplings
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_RTG_SAPLINGS;
-    public readonly ConfigPropertyInt RTG_TREE_CHANCE;
+        public readonly ConfigPropertyBoolean ENABLE_RTG_SAPLINGS;
+        public readonly ConfigPropertyInt RTG_TREE_CHANCE;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Scattered features
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Scattered features
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_SCATTERED_FEATURE_MODIFICATIONS;
-    public readonly ConfigPropertyBoolean GENERATE_SCATTERED_FEATURES;
-    public readonly ConfigPropertyInt MIN_DISTANCE_SCATTERED_FEATURES;
-    public readonly ConfigPropertyInt MAX_DISTANCE_SCATTERED_FEATURES;
+        public readonly ConfigPropertyBoolean ENABLE_SCATTERED_FEATURE_MODIFICATIONS;
+        public readonly ConfigPropertyBoolean GENERATE_SCATTERED_FEATURES;
+        public readonly ConfigPropertyInt MIN_DISTANCE_SCATTERED_FEATURES;
+        public readonly ConfigPropertyInt MAX_DISTANCE_SCATTERED_FEATURES;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Snow
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Snow
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_SNOW_LAYERS;
+        public readonly ConfigPropertyBoolean ENABLE_SNOW_LAYERS;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Strongholds
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Strongholds
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_STRONGHOLD_MODIFICATIONS;
-    public readonly ConfigPropertyBoolean GENERATE_STRONGHOLDS;
-    public readonly ConfigPropertyInt STRONGHOLD_COUNT;
-    public readonly ConfigPropertyInt STRONGHOLD_DISTANCE;
-    public readonly ConfigPropertyInt STRONGHOLD_SPREAD;
+        public readonly ConfigPropertyBoolean ENABLE_STRONGHOLD_MODIFICATIONS;
+        public readonly ConfigPropertyBoolean GENERATE_STRONGHOLDS;
+        public readonly ConfigPropertyInt STRONGHOLD_COUNT;
+        public readonly ConfigPropertyInt STRONGHOLD_DISTANCE;
+        public readonly ConfigPropertyInt STRONGHOLD_SPREAD;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Terrain shadowing
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Terrain shadowing
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyString SHADOW_STONE_BLOCK_ID;
-    public readonly ConfigPropertyInt SHADOW_STONE_BLOCK_META;
-    public readonly ConfigPropertyString SHADOW_DESERT_BLOCK_ID;
-    public readonly ConfigPropertyInt SHADOW_DESERT_BLOCK_META;
-    public readonly ConfigPropertyBoolean ENABLE_UBC_STONE_SHADOWING;
-    public readonly ConfigPropertyBoolean ENABLE_UBC_DESERT_SHADOWING;
+        public readonly ConfigPropertyString SHADOW_STONE_BLOCK_ID;
+        public readonly ConfigPropertyInt SHADOW_STONE_BLOCK_META;
+        public readonly ConfigPropertyString SHADOW_DESERT_BLOCK_ID;
+        public readonly ConfigPropertyInt SHADOW_DESERT_BLOCK_META;
+        public readonly ConfigPropertyBoolean ENABLE_UBC_STONE_SHADOWING;
+        public readonly ConfigPropertyBoolean ENABLE_UBC_DESERT_SHADOWING;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Trees
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Trees
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ALLOW_TREES_TO_GENERATE_ON_SAND;
-    public readonly ConfigPropertyBoolean ALLOW_SHRUBS_TO_GENERATE_BELOW_SURFACE;
-    public readonly ConfigPropertyBoolean ALLOW_BARK_COVERED_LOGS;
-    public readonly ConfigPropertyFloat TREE_DENSITY_MULTIPLIER;
+        public readonly ConfigPropertyBoolean ALLOW_TREES_TO_GENERATE_ON_SAND;
+        public readonly ConfigPropertyBoolean ALLOW_SHRUBS_TO_GENERATE_BELOW_SURFACE;
+        public readonly ConfigPropertyBoolean ALLOW_BARK_COVERED_LOGS;
+        public readonly ConfigPropertyFloat TREE_DENSITY_MULTIPLIER;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Villages
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Villages
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyBoolean ENABLE_VILLAGE_MODIFICATIONS;
-    public readonly ConfigPropertyBoolean GENERATE_VILLAGES;
-    public readonly ConfigPropertyInt VILLAGE_SIZE;
-    public readonly ConfigPropertyInt MIN_DISTANCE_VILLAGES;
-    public readonly ConfigPropertyInt MAX_DISTANCE_VILLAGES;
+        public readonly ConfigPropertyBoolean ENABLE_VILLAGE_MODIFICATIONS;
+        public readonly ConfigPropertyBoolean GENERATE_VILLAGES;
+        public readonly ConfigPropertyInt VILLAGE_SIZE;
+        public readonly ConfigPropertyInt MIN_DISTANCE_VILLAGES;
+        public readonly ConfigPropertyInt MAX_DISTANCE_VILLAGES;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    // Volcanoes
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        // Volcanoes
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public readonly ConfigPropertyString VOLCANO_BLOCK_ID;
-    public readonly ConfigPropertyInt VOLCANO_BLOCK_META;
-    public readonly ConfigPropertyString VOLCANO_MIX1_BLOCK_ID;
-    public readonly ConfigPropertyInt VOLCANO_MIX1_BLOCK_META;
-    public readonly ConfigPropertyString VOLCANO_MIX2_BLOCK_ID;
-    public readonly ConfigPropertyInt VOLCANO_MIX2_BLOCK_META;
-    public readonly ConfigPropertyString VOLCANO_MIX3_BLOCK_ID;
-    public readonly ConfigPropertyInt VOLCANO_MIX3_BLOCK_META;
-    public readonly ConfigPropertyBoolean ENABLE_VOLCANOES;
-    public readonly ConfigPropertyBoolean ENABLE_VOLCANO_ERUPTIONS;
-    public readonly ConfigPropertyInt VOLCANO_CHANCE;
+        public readonly ConfigPropertyString VOLCANO_BLOCK_ID;
+        public readonly ConfigPropertyInt VOLCANO_BLOCK_META;
+        public readonly ConfigPropertyString VOLCANO_MIX1_BLOCK_ID;
+        public readonly ConfigPropertyInt VOLCANO_MIX1_BLOCK_META;
+        public readonly ConfigPropertyString VOLCANO_MIX2_BLOCK_ID;
+        public readonly ConfigPropertyInt VOLCANO_MIX2_BLOCK_META;
+        public readonly ConfigPropertyString VOLCANO_MIX3_BLOCK_ID;
+        public readonly ConfigPropertyInt VOLCANO_MIX3_BLOCK_META;
+        public readonly ConfigPropertyBoolean ENABLE_VOLCANOES;
+        public readonly ConfigPropertyBoolean ENABLE_VOLCANO_ERUPTIONS;
+        public readonly ConfigPropertyInt VOLCANO_CHANCE;
 
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    public RTGConfig()
+        public RTGConfig()
         {
 
             //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

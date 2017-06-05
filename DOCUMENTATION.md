@@ -4,13 +4,23 @@ Realistic Terrain Generation is a Minecraft mod that was created by Team RTG in 
 I would like to personally thank the developers of the RTG mod for doing an amazing job and continuing to support the mod as the Minecraft modding community continues to grow.
 ## Aims
 My aim for this project is to convert the Realistic Terrain Generation mod from Java to C# for use in the Unity3D game engine, ambiguous of terrain tools or assets used. As such, the project will only give raw numbers with which an adapter will need to be created to handle said numbers for use with the terrain tool used. All code will be converted as faithfully as possible, even if redundant, to allow for conversion into other game engines that may not have the same functions.
+## Standardisations
+In order to convert the code as close to the original as possible, some standardisations have to be made. They are as follows:
+- All **math functions** will use **System** instead of **UnityEngine** to allow for a greater level of functionality
+- **Static code blocks** in Java will be named **static void temp()** in Unity until such a time when it can be implemented properly
+- If **interface** is not used then it will be **implemented**
 ## Plan
 ### Stage 1 - Heightmap
 - Jave to C# code conversion
+- Substitute Minecraft code for generic alternative (using Forge as a baseline)
 ### Stage 2 - Terrain
-*to do*
+- Output to **height map**
+- Output to **terrain map**
+- Output to **geography map**
+- Output to **details map**
 ### Stage 3 - Adapter
-*to do*
+- Create adapter for **Unity Terrain**
+- Create adapter for **UniBlocks** asset (as test case)
 ## Progress
 ### 0 – Unity Setup	(7/5/17)
 Unity 5.6.0f3 will be used for this project with a 3D setup and a single scene containing a terrain object to test the program on. All scripts will be run at runtime to prevent lag during scene editing.

@@ -15,7 +15,7 @@ namespace rtg.api.util.noise
     public class OpenSimplexNoise : SimplexOctave
     {
 
-        private readonly SimplexOctave[] octaves;
+        public readonly SimplexOctave[] octaves;
         private static readonly int OCTAVE_COUNT = 10;  // perhaps should be a variable
                                                         // but that creates coordination issues
 

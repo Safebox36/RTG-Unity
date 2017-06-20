@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RTG Unity\api\RTGAPI.cs" />
     <Compile Include="Assets\RTG Unity\api\config\BiomeConfig.cs" />
     <Compile Include="Assets\RTG Unity\api\config\Config.cs" />
     <Compile Include="Assets\RTG Unity\api\config\RTGConfig.cs" />
@@ -86,6 +87,12 @@
     <Compile Include="Assets\RTG Unity\api\config\property\ConfigPropertyFloat.cs" />
     <Compile Include="Assets\RTG Unity\api\config\property\ConfigPropertyInt.cs" />
     <Compile Include="Assets\RTG Unity\api\config\property\ConfigPropertyString.cs" />
+    <Compile Include="Assets\RTG Unity\api\util\Acceptor.cs" />
+    <Compile Include="Assets\RTG Unity\api\util\Accessor.cs" />
+    <Compile Include="Assets\RTG Unity\api\util\CircularSearchCreator.cs" />
+    <Compile Include="Assets\RTG Unity\api\util\CliffCalculator.cs" />
+    <Compile Include="Assets\RTG Unity\api\util\Compass.cs" />
+    <Compile Include="Assets\RTG Unity\api\util\Direction.cs" />
     <Compile Include="Assets\RTG Unity\api\util\noise\CellNoise.cs" />
     <Compile Include="Assets\RTG Unity\api\util\noise\CellOctave.cs" />
     <Compile Include="Assets\RTG Unity\api\util\noise\OpenSimplexNoise.cs" />
@@ -94,6 +101,50 @@
     <Compile Include="Assets\RTG Unity\api\util\noise\SimplexOctave.cs" />
     <Compile Include="Assets\RTG Unity\api\util\noise\VoronoiCellNoise.cs" />
     <Compile Include="Assets\RTG Unity\api\util\noise\VoronoiCellOctave.cs" />
+    <Compile Include="Assets\RTG Unity\api\world\RTGWorld.cs" />
+    <Compile Include="Assets\RTG Unity\generic\block\Block.cs" />
+    <Compile Include="Assets\RTG Unity\generic\init\Blocks.cs" />
+    <Compile Include="Assets\RTG Unity\generic\world\World.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\AdjustableSpikeEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\BlendedHillEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\BumpyHillsEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\FunctionalTerrainBase.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\GroundEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\HeightEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\HeightVariation.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\HillockEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\HillsEverywhereEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\LonelyMountainEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\MountainsWithPassesEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\PlateauEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\RaiseEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\ScatteredMountainsEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\SpikeEffect.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainBase.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainBeach.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainCanyon.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainDuneValley.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainDunes.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainFlatLakes.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainForest.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainGrasslandFlats.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainGrasslandHills.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainGrasslandMountains.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainHighland.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainLonelyMountain.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainMarsh.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainMesa.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainMountain.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainMountainRiver.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainMountainSpikes.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainOcean.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainOceanCanyon.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainPlains.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainPolar.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainRollingHills.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainSwampMountain.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\TerrainVolcano.cs" />
+    <Compile Include="Assets\RTG Unity\world\gen\terrain\VariableRuggednessEffect.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

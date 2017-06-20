@@ -26,3 +26,6 @@ In order to convert the code as close to the original as possible, some standard
 Unity 5.6.0f3 will be used for this project with a 3D setup and a single scene containing a terrain object to test the program on. All scripts will be run at runtime to prevent lag during scene editing.
 ### 1 – Starting Point	(7/5/17)
 Because of how complex the RTG system is, I’ve decided to start from the most isolated part of the code I could find; the api/config. More specifically, the property folder within api/config. After I’ve converted the scripts in this folder I’ll move onto the rest of the api/config folder then api/util & api/world.
+### 2 - Identifying Key Code (19/6/17)
+Having attempted to identify which code is necessary to complete Stage 1, I believe I now have enough to work backwards from the output code necessary to generate the noise and subsequent terrain.
+Terrain code has been created and completed (with the exception of a few); block, world and chunk interfaces need to be created before any further conversion can be carried out.

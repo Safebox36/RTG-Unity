@@ -95,7 +95,7 @@
                 }
                 if (fromX * fromX + fromY * fromY < .004)
                 {
-                    //throw new RuntimeException();
+                    throw new Exception();
                 }
             }
             // not tooClose; add
@@ -236,7 +236,7 @@
                 }
                 crashing = false;
             }
-            //if (results[0] > results[1]) throw new RuntimeException();
+            if (results[0] > results[1]) throw new Exception();
             return results;
         }
 

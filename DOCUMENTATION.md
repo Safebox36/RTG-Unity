@@ -8,7 +8,9 @@ My aim for this project is to convert the Realistic Terrain Generation mod from 
 In order to convert the code as close to the original as possible, some standardisations have to be made. They are as follows:
 - All **math functions** will use **System** instead of **UnityEngine** to allow for a greater level of functionality
 - **Static code blocks** in Java will be named **static void temp()** in Unity until such a time when it can be implemented properly
-- If **interface** is not used then it will be **implemented**
+- If **interface** is not used then it will be **implemented regardless**
+- Heightmap data will be saved in a bitmap file until such a time when a custom file format can be created. R will represent height, G will represent block and B will represent block variations (such as biome or state).
+- Due to difficulty converting OpenSimplexNoise to C#, all relevant scripts will be substituted with digitalshadow's C# port with the values of the original Java scripts.
 ## Plan
 ### Stage 1 - Heightmap
 - Jave to C# code conversion
@@ -28,4 +30,9 @@ Unity 5.6.0f3 will be used for this project with a 3D setup and a single scene c
 Because of how complex the RTG system is, I’ve decided to start from the most isolated part of the code I could find; the api/config. More specifically, the property folder within api/config. After I’ve converted the scripts in this folder I’ll move onto the rest of the api/config folder then api/util & api/world.
 ### 2 - Identifying Key Code (19/6/17)
 Having attempted to identify which code is necessary to complete Stage 1, I believe I now have enough to work backwards from the output code necessary to generate the noise and subsequent terrain.
+
 Terrain code has been created and completed (with the exception of a few); block, world and chunk interfaces need to be created before any further conversion can be carried out.
+### 3 - Block to IBlockState (22/6/17)
+Prior to today, I renamed every IBlockState to Block but have since implemented the use of IBlockState and will need to go back and undo all previous changes so as to keep consistency with the original code.
+### 4 - Terrain and Surface Separation (4/7/17)
+I have fully converted the world/gen/terrain scripts and am now moving on to the world/gen/surface scripts. I spoke to WhichOnesPink on the RTG Discord group and he's explained that world/gen/terrain is responsible for the height values while world/gen/surface is responsible for the blocks that will appear at those height values. With that in mind, I've decided to deviate quite dramatically from the original source code for converting the surface scripts to C# to take into account the raw numbers rather than the block values themselves. Having said that, I will use the existing block values as a guideline before adapting it further.

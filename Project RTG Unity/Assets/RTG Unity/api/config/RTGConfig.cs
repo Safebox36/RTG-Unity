@@ -3,7 +3,9 @@
     using System.Collections.Generic;
 
     //import net.minecraft.block.state.IBlockState;
+    using generic.block.state;
     //import net.minecraft.init.Blocks;
+    using generic.init;
 
     using property;
 
@@ -14,16 +16,16 @@
         public static readonly float MAX_TREE_DENSITY = 5f;
 
         // These ants are used as fallbacks during terrain shadowing, in case the user enters an invalid block ID.
-        public static readonly string DEFAULT_SHADOW_STONE_BLOCK_ID = "minecraft:stained_hardened_clay";
+        public static readonly IBlockState DEFAULT_SHADOW_STONE_BLOCK_ID = (IBlockState)Blocks.STAINED_HARDENED_CLAY;
         public static readonly int DEFAULT_SHADOW_STONE_BLOCK_META = 9;
-        public static readonly string DEFAULT_SHADOW_DESERT_BLOCK_ID = "minecraft:stained_hardened_clay";
+        public static readonly IBlockState DEFAULT_SHADOW_DESERT_BLOCK_ID = (IBlockState)Blocks.STAINED_HARDENED_CLAY;
         public static readonly int DEFAULT_SHADOW_DESERT_BLOCK_META = 0;
 
         // These ants are used as fallbacks when generating volcanoes, in case the user enters an invalid block ID.
-        //public static final IBlockState DEFAULT_VOLCANO_BLOCK = Blocks.OBSIDIAN.getDefaultState();
-        //public static final IBlockState DEFAULT_VOLCANO_MIX1_BLOCK = Blocks.COBBLESTONE.getDefaultState();
-        //public static final IBlockState DEFAULT_VOLCANO_MIX2_BLOCK = Blocks.GRAVEL.getDefaultState();
-        //public static final IBlockState DEFAULT_VOLCANO_MIX3_BLOCK = Blocks.COAL_BLOCK.getDefaultState();
+        public static readonly IBlockState DEFAULT_VOLCANO_BLOCK = (IBlockState)Blocks.OBSIDIAN.getDefaultState();
+        public static readonly IBlockState DEFAULT_VOLCANO_MIX1_BLOCK = (IBlockState)Blocks.COBBLESTONE.getDefaultState();
+        public static readonly IBlockState DEFAULT_VOLCANO_MIX2_BLOCK = (IBlockState)Blocks.GRAVEL.getDefaultState();
+        public static readonly IBlockState DEFAULT_VOLCANO_MIX3_BLOCK = (IBlockState)Blocks.COAL_BLOCK.getDefaultState();
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1097,7 +1099,7 @@
                 "Stone shadow block ID",
                 "Terrain shadowing",
                 "The block to use for stone terrain shadowing, typically seen on the cliffs of stone mountains. Defaults to stained hardened clay.",
-                DEFAULT_SHADOW_STONE_BLOCK_ID
+                DEFAULT_SHADOW_STONE_BLOCK_ID.ToString()
             );
             this.addProperty(SHADOW_STONE_BLOCK_ID);
 
@@ -1115,7 +1117,7 @@
                 "Desert shadow block ID",
                 "Terrain shadowing",
                 "The block to use for desert terrain shadowing, typically seen on the cliffs of desert mountains. Defaults to stained hardened clay.",
-                DEFAULT_SHADOW_DESERT_BLOCK_ID
+                DEFAULT_SHADOW_DESERT_BLOCK_ID.ToString()
             );
             this.addProperty(SHADOW_DESERT_BLOCK_ID);
 

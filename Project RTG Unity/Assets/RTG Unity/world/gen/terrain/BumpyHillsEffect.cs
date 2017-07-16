@@ -25,9 +25,9 @@
 
         override public float added(RTGWorld rtgWorld, float x, float y)
         {
-            float noise = (float)rtgWorld.simplex.octaves[hillOctave].Evaluate(x / hillWavelength, y / hillWavelength);
+            float noise = rtgWorld.simplex.octave(hillOctave).noise2(x / hillWavelength, y / hillWavelength);
             noise = TerrainBase.blendedHillHeight(noise);
-            float spikeNoise = (float)rtgWorld.simplex.octaves[spikeOctave].Evaluate(x / spikeWavelength, y / spikeWavelength);
+            float spikeNoise = rtgWorld.simplex.octave(spikeOctave).noise2(x / spikeWavelength, y / spikeWavelength);
             spikeNoise = TerrainBase.blendedHillHeight(spikeNoise * noise);
             return noise * hillHeight + spikeNoise * spikeHeight;
         }

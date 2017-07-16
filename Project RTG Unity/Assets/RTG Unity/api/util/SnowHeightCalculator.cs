@@ -1,8 +1,7 @@
 ﻿namespace rtg.api.util
 {
-    //import net.minecraft.block.BlockSnow;
-    using generic.block;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.PixelSnow;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.chunk.ChunkPrimer;
     using generic.world.chunk;
@@ -20,13 +19,13 @@
 
                 if (h > 7)
                 {
-                    primer.setBlockState(x, y + 2, z, (Block)Blocks.SNOW.getDefaultState());
-                    //primer.setBlockState(x, y + 1, z, Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, 7));
+                    primer.setPixelState(x, y + 2, z, Pixels.SNOW);
+                    primer.setPixelState(x, y + 1, z, Pixels.SNOW_LAYER.withProperty(7));
                 }
                 else if (h > 0)
                 {
-                    primer.setBlockState(x, y + 2, z, (Block)Blocks.SNOW_LAYER.getDefaultState());
-                    //primer.setBlockState(x, y + 1, z, Blocks.SNOW_LAYER.getDefaultState().withProperty(BlockSnow.LAYERS, (int)h));
+                    primer.setPixelState(x, y + 2, z, Pixels.SNOW_LAYER);
+                    primer.setPixelState(x, y + 1, z, Pixels.SNOW_LAYER.withProperty(h));
                 }
             }
         }

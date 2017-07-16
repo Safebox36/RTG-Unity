@@ -24,13 +24,13 @@
         override public float added(RTGWorld rtgWorld, float x, float y)
         {
 
-            float noise = (float)rtgWorld.simplex.octaves[hillOctave].Evaluate(x / mountainWavelength, y / mountainWavelength);
+            float noise = rtgWorld.simplex.octave(hillOctave).noise2(x / mountainWavelength, y / mountainWavelength);
             noise = Math.Abs(noise);
             noise = TerrainBase.blendedHillHeight(noise, 0f);
             //transform to be more mountainous
             noise = TerrainBase.unsignedPower(noise, 1.7f);
             noise = 1f - (1f - noise) / (1f - adjustedBottom);
-            float spikeNoise = (float)rtgWorld.simplex.octaves[spikeOctave].Evaluate((float)x / spikeWavelength, (float)y / spikeWavelength);
+            float spikeNoise = rtgWorld.simplex.octave(spikeOctave).noise2((float)x / spikeWavelength, (float)y / spikeWavelength);
             spikeNoise = Math.Abs(noise);
             spikeNoise = TerrainBase.blendedHillHeight(noise, 0f);
             spikeNoise *= noise;

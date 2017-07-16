@@ -2,9 +2,9 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -24,11 +24,11 @@
         // Cut-off noise amplitude. The bigger, the more effect cut-off is going to have in the grass
         private float cutOffAmplitude;
 
-        public SurfaceRiverOasis(BiomeConfig config) : base(config, Blocks.GRASS, (byte)0, Blocks.DIRT, (byte)0)
+        public SurfaceRiverOasis(BiomeConfig config) : base(config, Pixels.GRASS, (byte)0, Pixels.DIRT, (byte)0)
         {
 
-            this.cutOffScale = RTGAPI.config().RIVER_CUT_OFF_SCALE.get();
-            this.cutOffAmplitude = RTGAPI.config().RIVER_CUT_OFF_AMPLITUDE.get();
+            this.cutOffScale = RTGAPI.config().RIVER_CUT_OFF_SCALE;
+            this.cutOffAmplitude = RTGAPI.config().RIVER_CUT_OFF_AMPLITUDE;
         }
 
         override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
@@ -37,22 +37,22 @@
             Random rand = rtgWorld.rand;
             OpenSimplexNoise simplex = rtgWorld.simplex;
 
-            Block b;
+            Pixel b;
             int highestY;
 
             for (highestY = 255; highestY > 0; highestY--)
             {
-                b = primer.getBlockState(x, highestY, z).getBlock();
-                if (b != Blocks.AIR)
+                b = primer.getPixelState(x, highestY, z).getPixel();
+                if (b != Pixels.AIR)
                     break;
             }
 
             float amplitude = 0.25f;
-            float noiseValue = (float)(simplex.octave(0).Evaluate(i / 21f, j / 21f) * amplitude / 1f);
-            noiseValue += (float)(simplex.octave(1).Evaluate(i / 12f, j / 12f) * amplitude / 2f);
+            float noiseValue = (simplex.octave(0).noise2(i / 21f, j / 21f) * amplitude / 1f);
+            noiseValue += (simplex.octave(1).noise2(i / 12f, j / 12f) * amplitude / 2f);
 
             // Large scale noise cut-off
-            float noiseNeg = (float)(simplex.octave(2).Evaluate(i / cutOffScale, j / cutOffScale) * cutOffAmplitude);
+            float noiseNeg = (simplex.octave(2).noise2(i / cutOffScale, j / cutOffScale) * cutOffAmplitude);
             noiseValue -= noiseNeg;
 
             // Height cut-off
@@ -63,22 +63,22 @@
             {
                 for (int k = 255; k > -1; k--)
                 {
-                    b = primer.getBlockState(x, k, z).getBlock();
-                    if (b == Blocks.AIR)
+                    b = primer.getPixelState(x, k, z).getPixel();
+                    if (b == Pixels.AIR)
                     {
                         depth = -1;
                     }
-                    else if (b != Blocks.WATER)
+                    else if (b != Pixels.WATER)
                     {
                         depth++;
 
                         if (depth == 0 && k > 61)
                         {
-                            primer.setBlockState(x, k, z, (Block)Blocks.GRASS.getDefaultState());
+                            primer.setPixelState(x, k, z, Pixels.GRASS);
                         }
                         else if (depth < 4)
                         {
-                            primer.setBlockState(x, k, z, (Block)Blocks.DIRT.getDefaultState());
+                            primer.setPixelState(x, k, z, Pixels.DIRT);
                         }
                         else if (depth > 4)
                         {

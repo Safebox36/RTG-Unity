@@ -40,7 +40,7 @@
                     for (int x = smallerHalfSize; x < size; x++)
                     {
                         int index = (int)x * size + y;
-                        if (found[index]) continue;// skip to next block; this is already in the patter
+                        if (found[index]) continue;// skip to next pixel; this is already in the patter
                         float distance = distanceFromCenter(x, y);
                         if (distance > radius) continue;// still too far; skip
                                                         //place in patter
@@ -54,7 +54,7 @@
                     for (int y = largerHalfSize; y < size; y++)
                     {
                         int index = (int)x * size + y;
-                        if (found[index]) continue;// skip to next block; this is already in the patter
+                        if (found[index]) continue;// skip to next pixel; this is already in the patter
                         float distance = distanceFromCenter(x, y);
                         if (distance > radius) continue;// still too far; skip
                                                         //place in patter
@@ -68,7 +68,7 @@
                     for (int x = smallerHalfSize - 1; x > -1; x--)
                     {
                         int index = (int)x * size + y;
-                        if (found[index]) continue;// skip to next block; this is already in the patter
+                        if (found[index]) continue;// skip to next pixel; this is already in the patter
                         float distance = distanceFromCenter(x, y);
                         if (distance > radius) continue;// still too far; skip
                                                         //place in pattern
@@ -82,7 +82,7 @@
                     for (int y = largerHalfSize - 1; y > -1; y--)
                     {
                         int index = (int)x * size + y;
-                        if (found[index]) continue;// skip to next block; this is already in the patter
+                        if (found[index]) continue;// skip to next pixel; this is already in the patter
                         float distance = distanceFromCenter(x, y);
                         if (distance > radius) continue;// still too far; skip
                                                         //place in pattern

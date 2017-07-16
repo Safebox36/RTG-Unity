@@ -2,52 +2,52 @@
 {
     using System;
 
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.util.math.BlockPos;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
     //import net.minecraft.world.World;
     using generic.world;
     //import net.minecraft.world.gen.feature.WorldGenerator;
     using generic.world.gen.feature;
 
-    public class WorldGenBlock : WorldGenerator
+    public class WorldGenPixel : WorldGenerator
     {
 
-        protected IBlockState placeBlock;
-        protected IBlockState replaceBlock;
-        protected IBlockState adjacentBlock;
+        protected IPixelState placePixel;
+        protected IPixelState replacePixel;
+        protected IPixelState adjacentPixel;
         protected int minAdjacents;
 
-        public WorldGenBlock(IBlockState placeBlock, IBlockState replaceBlock, IBlockState adjacentBlock, int minAdjacents) : base(false)
+        public WorldGenPixel(IPixelState placePixel, IPixelState replacePixel, IPixelState adjacentPixel, int minAdjacents) : base(false)
         {
-            this.placeBlock = placeBlock;
-            this.replaceBlock = replaceBlock;
-            this.setAdjacentBlock(adjacentBlock);
+            this.placePixel = placePixel;
+            this.replacePixel = replacePixel;
+            this.setAdjacentPixel(adjacentPixel);
             this.setMinAdjacents(minAdjacents);
         }
 
-        override public bool generate(World world, Random rand, BlockPos pos)
+        override public bool generate(World world, Random rand, PixelPos pos)
         {
 
             int x = pos.getX();
             int y = pos.getY();
             int z = pos.getZ();
-            IBlockState targetBlock = world.getBlockState(new BlockPos(x, y, z));
+            IPixelState targetPixel = world.getPixelState(new PixelPos(x, y, z));
 
-            if (targetBlock != replaceBlock)
+            if (targetPixel != replacePixel)
             {
-                //Logger.debug("Target block (%s) does not equal Replace block (%s)", targetBlock.getLocalizedName(), replaceBlock.getLocalizedName());
+                //Logger.debug("Target pixel (%s) does not equal Replace pixel (%s)", targetPixel.getLocalizedName(), replacePixel.getLocalizedName());
                 return false;
             }
 
             if (!isAdjacent(world, x, y, z))
             {
-                //Logger.debug("Target block (%s) is not adjacent to %s", targetBlock.getLocalizedName(), this.adjacentBlock.getLocalizedName());
+                //Logger.debug("Target pixel (%s) is not adjacent to %s", targetPixel.getLocalizedName(), this.adjacentPixel.getLocalizedName());
                 return false;
             }
 
-            world.setBlockState(new BlockPos(x, y, z), placeBlock, 2);
+            world.setPixelState(new PixelPos(x, y, z), placePixel);
 
             //Logger.debug("COBWEB at %d, %d, %d !!!", x, y, z);
 
@@ -59,32 +59,32 @@
 
             int adjacentCount = 0;
 
-            if (world.getBlockState(new BlockPos(x + 1, y, z)) == this.adjacentBlock)
+            if (world.getPixelState(new PixelPos(x + 1, y, z)) == this.adjacentPixel)
             {
                 adjacentCount++;
             }
 
-            if (world.getBlockState(new BlockPos(x - 1, y, z)) == this.adjacentBlock)
+            if (world.getPixelState(new PixelPos(x - 1, y, z)) == this.adjacentPixel)
             {
                 adjacentCount++;
             }
 
-            if (world.getBlockState(new BlockPos(x, y + 1, z)) == this.adjacentBlock)
+            if (world.getPixelState(new PixelPos(x, y + 1, z)) == this.adjacentPixel)
             {
                 adjacentCount++;
             }
 
-            if (world.getBlockState(new BlockPos(x, y - 1, z)) == this.adjacentBlock)
+            if (world.getPixelState(new PixelPos(x, y - 1, z)) == this.adjacentPixel)
             {
                 adjacentCount++;
             }
 
-            if (world.getBlockState(new BlockPos(x, y, z + 1)) == this.adjacentBlock)
+            if (world.getPixelState(new PixelPos(x, y, z + 1)) == this.adjacentPixel)
             {
                 adjacentCount++;
             }
 
-            if (world.getBlockState(new BlockPos(x, y, z - 1)) == this.adjacentBlock)
+            if (world.getPixelState(new PixelPos(x, y, z - 1)) == this.adjacentPixel)
             {
                 adjacentCount++;
             }
@@ -92,42 +92,42 @@
             return (adjacentCount > 0 && adjacentCount >= this.minAdjacents);
         }
 
-        public IBlockState getPlaceBlock()
+        public IPixelState getPlacePixel()
         {
 
-            return placeBlock;
+            return placePixel;
         }
 
-        public WorldGenBlock setPlaceBlock(IBlockState placeBlock)
+        public WorldGenPixel setPlacePixel(IPixelState placePixel)
         {
 
-            this.placeBlock = placeBlock;
+            this.placePixel = placePixel;
             return this;
         }
 
-        public IBlockState getReplaceBlock()
+        public IPixelState getReplacePixel()
         {
 
-            return replaceBlock;
+            return replacePixel;
         }
 
-        public WorldGenBlock setReplaceBlock(IBlockState replaceBlock)
+        public WorldGenPixel setReplacePixel(IPixelState replacePixel)
         {
 
-            this.replaceBlock = replaceBlock;
+            this.replacePixel = replacePixel;
             return this;
         }
 
-        public IBlockState getAdjacentBlock()
+        public IPixelState getAdjacentPixel()
         {
 
-            return adjacentBlock;
+            return adjacentPixel;
         }
 
-        public WorldGenBlock setAdjacentBlock(IBlockState adjacentBlock)
+        public WorldGenPixel setAdjacentPixel(IPixelState adjacentPixel)
         {
 
-            this.adjacentBlock = adjacentBlock;
+            this.adjacentPixel = adjacentPixel;
             return this;
         }
 
@@ -137,7 +137,7 @@
             return minAdjacents;
         }
 
-        public WorldGenBlock setMinAdjacents(int minAdjacents)
+        public WorldGenPixel setMinAdjacents(int minAdjacents)
         {
 
             this.minAdjacents = minAdjacents;

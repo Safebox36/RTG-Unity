@@ -2,10 +2,10 @@
 {
     using System.Collections.Generic;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
 
     using rtg.api;
     using rtg.api.config;
@@ -19,16 +19,16 @@
     public class CanyonColour
     {
 
-        public static readonly CanyonColour MESA = new CanyonColour(RTGConfig.getPlateauGradientBlockMetasFromConfigString(RTGAPI.config().MESA_GRADIENT_STRING.get()));
-        public static readonly CanyonColour MESA_BRYCE = new CanyonColour(RTGConfig.getPlateauGradientBlockMetasFromConfigString(RTGAPI.config().MESA_BRYCE_GRADIENT_STRING.get()));
-        public static readonly CanyonColour SAVANNA = new CanyonColour(RTGConfig.getPlateauGradientBlockMetasFromConfigString(RTGAPI.config().SAVANNA_GRADIENT_STRING.get()));
+        public static readonly CanyonColour MESA = new CanyonColour(RTGConfig.getPlateauGradientPixelMetasFromConfigString(RTGAPI.config().MESA_GRADIENT_STRING));
+        public static readonly CanyonColour MESA_BRYCE = new CanyonColour(RTGConfig.getPlateauGradientPixelMetasFromConfigString(RTGAPI.config().MESA_BRYCE_GRADIENT_STRING));
+        public static readonly CanyonColour SAVANNA = new CanyonColour(RTGConfig.getPlateauGradientPixelMetasFromConfigString(RTGAPI.config().SAVANNA_GRADIENT_STRING));
 
-        private static Dictionary<CanyonColour, IBlockState[]> colourBlocks = new Dictionary<CanyonColour, IBlockState[]>();
+        private static Dictionary<CanyonColour, IPixelState[]> colourPixels = new Dictionary<CanyonColour, IPixelState[]>();
         private static OpenSimplexNoise simplex;
         private byte[] bytes;
 
-        private static IBlockState plateauBlock = (IBlockState)generic.init.Blocks.HARDENED_CLAY;  //Block.getBlockFromName(RTGAPI.config().PLATEAU_BLOCK_ID.get()).getStateFromMeta(RTGAPI.config().PLATEAU_BLOCK_META.get());
-        private static Block plateauGradientBlock = (IBlockState)generic.init.Blocks.STAINED_HARDENED_CLAY; //Block.getBlockFromName(RTGAPI.config().PLATEAU_GRADIENT_BLOCK_ID.get());
+        private static IPixelState plateauPixel = (IPixelState)new Pixel(RTGAPI.config().PLATEAU_PIXEL_ID).withProperty(RTGAPI.config().PLATEAU_PIXEL_META);
+        private static Pixel plateauGradientPixel = new Pixel(RTGAPI.config().PLATEAU_GRADIENT_PIXEL_ID);
 
         CanyonColour(byte[] bytes)
         {
@@ -40,35 +40,35 @@
 
             simplex = new OpenSimplexNoise(l);
 
-            foreach (CanyonColour colour in colourBlocks.Keys)
+            foreach (CanyonColour colour in colourPixels.Keys)
             {
 
-                IBlockState[] c = new IBlockState[256];
+                IPixelState[] c = new IPixelState[256];
                 int j;
 
                 for (int i = 0; i < 256; i++)
                 {
 
                     byte b = colour.bytes[i % colour.bytes.Length];
-                    c[i] = (b == -1) ? plateauBlock : (IBlockState)plateauGradientBlock.getStateFromMeta(b);
+                    c[i] = (b == -1) ? plateauPixel : (IPixelState)plateauGradientPixel.withProperty(b);
                 }
 
-                colourBlocks[colour] = c;
+                colourPixels[colour] = c;
             }
         }
 
-        public IBlockState getBlockForHeight(int x, int y, int z)
+        public IPixelState getPixelForHeight(int x, int y, int z)
         {
 
-            return getBlockForHeight(x, (float)y, z);
+            return getPixelForHeight(x, (float)y, z);
         }
 
-        public IBlockState getBlockForHeight(int x, float y, int z)
+        public IPixelState getPixelForHeight(int x, float y, int z)
         {
 
             y = (y < 0) ? 0 : (y > 255) ? 255 : y;
 
-            return colourBlocks[this][(int)y];
+            return colourPixels[this][(int)y];
         }
     }
 }

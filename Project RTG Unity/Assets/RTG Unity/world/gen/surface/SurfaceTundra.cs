@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -21,7 +21,7 @@
     public class SurfaceTundra : SurfaceBase
     {
 
-        public SurfaceTundra(BiomeConfig config, IBlockState top, IBlockState fill) : base(config, top, fill)
+        public SurfaceTundra(BiomeConfig config, IPixelState top, IPixelState fill) : base(config, top, fill)
         {
 
         }
@@ -35,15 +35,15 @@
             float c = CliffCalculator.calc(x, z, noise);
             int cliff = 0;
 
-            Block b;
+            Pixel b;
             for (int k = 255; k > -1; k--)
             {
-                b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -68,48 +68,48 @@
                             if (rand.Next(3) == 0)
                             {
 
-                                primer.setBlockState(x, k, z, hcCobble(rtgWorld, i, j, x, z, k));
+                                primer.setPixelState(x, k, z, hcCobble(rtgWorld, i, j, x, z, k));
                             }
                             else
                             {
 
-                                primer.setBlockState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
+                                primer.setPixelState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
                             }
                         }
                         else if (cliff == 2)
                         {
-                            primer.setBlockState(x, k, z, getShadowStoneBlock(rtgWorld, i, j, x, z, k));
+                            primer.setPixelState(x, k, z, getShadowStonePixel(rtgWorld, i, j, x, z, k));
                         }
                         else if (cliff == 3)
                         {
-                            primer.setBlockState(x, k, z, (Block)Blocks.SNOW.getDefaultState());
+                            primer.setPixelState(x, k, z, Pixels.SNOW);
                         }
                         else if (simplex.noise2(i / 50f, j / 50f) + p * 0.6f > 0.24f)
                         {
-                            primer.setBlockState(x, k, z, BlockUtil.getStateDirt(2));
+                            primer.setPixelState(x, k, z, PixelUtil.getStateDirt(2));
                         }
                         else
                         {
-                            primer.setBlockState(x, k, z, (Block)Blocks.GRASS.getDefaultState());
+                            primer.setPixelState(x, k, z, Pixels.GRASS);
                         }
                     }
                     else if (depth < 6)
                     {
                         if (cliff == 1)
                         {
-                            primer.setBlockState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
+                            primer.setPixelState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
                         }
                         else if (cliff == 2)
                         {
-                            primer.setBlockState(x, k, z, getShadowStoneBlock(rtgWorld, i, j, x, z, k));
+                            primer.setPixelState(x, k, z, getShadowStonePixel(rtgWorld, i, j, x, z, k));
                         }
                         else if (cliff == 3)
                         {
-                            primer.setBlockState(x, k, z, (Block)Blocks.SNOW.getDefaultState());
+                            primer.setPixelState(x, k, z, Pixels.SNOW);
                         }
                         else
                         {
-                            primer.setBlockState(x, k, z, (Block)Blocks.DIRT.getDefaultState());
+                            primer.setPixelState(x, k, z, Pixels.DIRT);
                         }
                     }
                 }

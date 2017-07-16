@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -21,17 +21,17 @@
     public class SurfaceGrasslandMix1 : SurfaceBase
     {
 
-        private IBlockState mixBlock;
-        private IBlockState cliffBlock1;
-        private IBlockState cliffBlock2;
+        private IPixelState mixPixel;
+        private IPixelState cliffPixel1;
+        private IPixelState cliffPixel2;
         private float width;
         private float height;
 
-        public SurfaceGrasslandMix1(BiomeConfig config, IBlockState top, IBlockState filler, IBlockState mix, IBlockState cliff1, IBlockState cliff2, float mixWidth, float mixHeight) : base(config, top, filler)
+        public SurfaceGrasslandMix1(BiomeConfig config, IPixelState top, IPixelState filler, IPixelState mix, IPixelState cliff1, IPixelState cliff2, float mixWidth, float mixHeight) : base(config, top, filler)
         {
-            mixBlock = mix;
-            cliffBlock1 = cliff1;
-            cliffBlock2 = cliff2;
+            mixPixel = mix;
+            cliffPixel1 = cliff1;
+            cliffPixel2 = cliff2;
 
             width = mixWidth;
             height = mixHeight;
@@ -47,12 +47,12 @@
 
             for (int k = 255; k > -1; k--)
             {
-                Block b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                Pixel b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -60,11 +60,11 @@
                     {
                         if (depth > -1 && depth < 2)
                         {
-                            primer.setBlockState(x, k, z, rand.Next(3) == 0 ? cliffBlock2 : cliffBlock1);
+                            primer.setPixelState(x, k, z, rand.Next(3) == 0 ? cliffPixel2 : cliffPixel1);
                         }
                         else if (depth < 10)
                         {
-                            primer.setBlockState(x, k, z, cliffBlock1);
+                            primer.setPixelState(x, k, z, cliffPixel1);
                         }
                     }
                     else
@@ -73,16 +73,16 @@
                         {
                             if (simplex.noise2(i / width, j / width) > height) // > 0.27f, i / 12f
                             {
-                                primer.setBlockState(x, k, z, mixBlock);
+                                primer.setPixelState(x, k, z, mixPixel);
                             }
                             else
                             {
-                                primer.setBlockState(x, k, z, topBlock);
+                                primer.setPixelState(x, k, z, topPixel);
                             }
                         }
                         else if (depth < 4)
                         {
-                            primer.setBlockState(x, k, z, fillerBlock);
+                            primer.setPixelState(x, k, z, fillerPixel);
                         }
                     }
                 }

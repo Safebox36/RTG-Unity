@@ -14,7 +14,7 @@
 
         }
 
-        public virtual bool generate(World world, System.Random rand, generic.util.math.BlockPos pos)
+        public virtual bool generate(World world, System.Random rand, generic.util.math.PixelPos pos)
         {
             return false;
         }

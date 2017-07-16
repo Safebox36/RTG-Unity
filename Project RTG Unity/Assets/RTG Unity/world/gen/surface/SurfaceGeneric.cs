@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -19,7 +19,7 @@
     public class SurfaceGeneric : SurfaceBase
     {
 
-        public SurfaceGeneric(BiomeConfig config, IBlockState top, IBlockState filler) : base(config, top, filler)
+        public SurfaceGeneric(BiomeConfig config, IPixelState top, IPixelState filler) : base(config, top, filler)
         {
 
         }
@@ -31,23 +31,23 @@
 
             for (int k = 255; k > -1; k--)
             {
-                Block b = primer.getBlockState(x, k, z).getBlock();
+                Pixel b = primer.getPixelState(x, k, z).getPixel();
 
-                if (b == Blocks.AIR)
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
                     if (depth == 0 && k > 61)
                     {
-                        primer.setBlockState(x, k, z, topBlock);
+                        primer.setPixelState(x, k, z, topPixel);
                     }
                     else if (depth < 4)
                     {
-                        primer.setBlockState(x, k, z, fillerBlock);
+                        primer.setPixelState(x, k, z, fillerPixel);
                     }
                 }
             }

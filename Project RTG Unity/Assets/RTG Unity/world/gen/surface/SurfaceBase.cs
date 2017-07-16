@@ -1,57 +1,47 @@
 ﻿namespace rtg.world.gen.surface
 {
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
     //import net.minecraft.world.chunk.ChunkPrimer;
     using generic.world.chunk;
 
-    //import rtg.api.RTGAPI;
     using rtg.api;
-    //import rtg.api.config.BiomeConfig;
     using rtg.api.config;
-    //import rtg.api.config.RTGConfig;
-    //import rtg.api.util.BlockUtil;
-    using rtg.api.util;
-    //import rtg.api.util.ModPresenceTester;
-    //import rtg.api.world.RTGWorld;
-    using rtg.api.world;
-    //import rtg.util.UBColumnCache;
+using rtg.api.util;
+using rtg.api.world;
 
     using System;
 
-    public abstract class SurfaceBase
+public abstract class SurfaceBase
 {
 
-    //private final static ModPresenceTester undergroundBiomesMod = new ModPresenceTester("undergroundbiomes");
-    // Create UBColumnCache only if UB is present
-    //private static UBColumnCache ubColumnCache = undergroundBiomesMod.present() ? new UBColumnCache() : null;
-    protected IBlockState topBlock;
-    protected IBlockState fillerBlock;
-    protected IBlockState cliffStoneBlock;
-    protected IBlockState cliffCobbleBlock;
+    protected IPixelState topPixel;
+    protected IPixelState fillerPixel;
+    protected IPixelState cliffStonePixel;
+    protected IPixelState cliffCobblePixel;
     protected RTGConfig rtgConfig = RTGAPI.config();
     protected BiomeConfig biomeConfig;
 
-    public IBlockState shadowStoneBlock;
-    public IBlockState shadowDesertBlock;
+    public IPixelState shadowStonePixel;
+    public IPixelState shadowDesertPixel;
 
-    public SurfaceBase(BiomeConfig config, Block top, byte topByte, Block fill, byte fillByte) : this(config, (Block)top.getStateFromMeta(topByte), (Block)fill.getStateFromMeta(fillByte))
-    {
-
+    public SurfaceBase(BiomeConfig config, Pixel top, byte topByte, Pixel fill, byte fillByte) : this(config, top, fill)
+        {
+            
     }
 
-        public SurfaceBase(BiomeConfig config, Block top, Block fill) : this(config, (IBlockState)top.getDefaultState(), (IBlockState)fill.getDefaultState())
+    public SurfaceBase(BiomeConfig config, Pixel top, Pixel fill) : this(config, (IPixelState)top, (IPixelState)fill)
         {
+            
+    }
 
-        }
-
-        public SurfaceBase(BiomeConfig config, IBlockState top, IBlockState fill)
+    public SurfaceBase(BiomeConfig config, IPixelState top, IPixelState fill)
     {
 
         if (config == null)
@@ -60,153 +50,121 @@
         }
 
         biomeConfig = config;
-        topBlock = top;
-        fillerBlock = fill;
-        this.initCliffBlocks();
-        this.initShadowBlocks();
+        topPixel = top;
+        fillerPixel = fill;
+        this.initCliffPixels();
+        this.initShadowPixels();
         this.assignUserConfigs(config, top, fill);
     }
 
-    public virtual void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+    virtual public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
     {
 
     }
 
-    protected IBlockState getShadowStoneBlock(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
+    protected IPixelState getShadowStonePixel(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
     {
-
-        //if ((undergroundBiomesMod.present()) && rtgConfig.ENABLE_UBC_STONE_SHADOWING.get())
-        //{
-
-        //    return new Block(Blocks.STONE);
-        //}
-        //else
-        //{
-
-            return this.shadowStoneBlock;
-        //}
+            return this.shadowStonePixel;
     }
 
-    protected IBlockState getShadowDesertBlock(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
+    protected IPixelState getShadowDesertPixel(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
     {
-
-        //if ((undergroundBiomesMod.present()) && rtgConfig.ENABLE_UBC_DESERT_SHADOWING.get())
-        //{
-
-        //    return Blocks.STONE.getDefaultState();
-        //}
-        //else
-        //{
-
-            return this.shadowDesertBlock;
-        //}
+                        return this.shadowDesertPixel;
     }
 
-    protected IBlockState hcStone(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
+    protected IPixelState hcStone(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
     {
 
-        return cliffStoneBlock;
+        return cliffStonePixel;
     }
 
-    protected IBlockState hcCobble(RTGWorld rtgWorld, int worldX, int worldZ, int chunkX, int chunkZ, int worldY)
+    protected IPixelState hcCobble(RTGWorld rtgWorld, int worldX, int worldZ, int chunkX, int chunkZ, int worldY)
     {
-
-        //if ((undergroundBiomesMod.present()))
-        //{
-
-        //    return ubColumnCache.column(worldX, worldZ).cobblestone(worldY);
-        //}
-        //else
-        //{
-
-            return cliffCobbleBlock;
-        //}
+            return cliffCobblePixel;
     }
 
-    public IBlockState getTopBlock()
+    public IPixelState getTopPixel()
     {
 
-        return this.topBlock;
+        return this.topPixel;
     }
 
-    public IBlockState getFillerBlock()
+    public IPixelState getFillerPixel()
     {
 
-        return this.fillerBlock;
+        return this.fillerPixel;
     }
 
-    private void assignUserConfigs(BiomeConfig config, IBlockState top, IBlockState fill)
+    private void assignUserConfigs(BiomeConfig config, IPixelState top, IPixelState fill)
     {
 
-        topBlock = (IBlockState)getConfigBlock(config.SURFACE_TOP_BLOCK.get(), config.SURFACE_TOP_BLOCK_META.get(), top);
-        fillerBlock = (IBlockState)getConfigBlock(config.SURFACE_FILLER_BLOCK.get(), config.SURFACE_FILLER_BLOCK_META.get(), fill);
+        topPixel = getConfigPixel(config.SURFACE_TOP_PIXEL, config.SURFACE_TOP_PIXEL_META, top);
+        fillerPixel = getConfigPixel(config.SURFACE_FILLER_PIXEL, config.SURFACE_FILLER_PIXEL_META, fill);
     }
 
-    protected IBlockState getConfigBlock(string userBlockId, int userBlockMeta, IBlockState blockDefault)
+    protected IPixelState getConfigPixel(int userPixelId, int userPixelMeta, IPixelState pixelDefault)
     {
 
-            IBlockState blockReturn;
+        IPixelState pixelReturn;
 
-            try
+        try
+        {
+
+            Pixel pixelConfig = new Pixel(userPixelId);
+
+            if (pixelConfig != null)
             {
-
-                Block blockConfig = Block.getBlockFromName(userBlockId);                  //no idea, figure this out
-
-                if (blockConfig != null)
+                if (userPixelMeta == 0)
                 {
-                    if (userBlockMeta == 0)
-                    {
-                        blockReturn = (IBlockState)blockConfig.getDefaultState();
-                    }
-                    else
-                    {
-                        blockReturn = (IBlockState)blockConfig.getStateFromMeta(userBlockMeta);
-                    }
+                    pixelReturn = (IPixelState)pixelConfig;
                 }
                 else
                 {
-                    blockReturn = blockDefault;
+                    pixelReturn = (IPixelState)pixelConfig.withProperty(userPixelMeta);
                 }
             }
-            catch (Exception e)
+            else
             {
-            blockReturn = blockDefault;
+                pixelReturn = pixelDefault;
+            }
+        }
+        catch (Exception e)
+        {
+            pixelReturn = pixelDefault;
         }
 
-        return blockReturn;
+        return pixelReturn;
     }
 
-    protected void initCliffBlocks()
+    protected void initCliffPixels()
     {
 
-        cliffStoneBlock = getConfigBlock(
-            biomeConfig.SURFACE_CLIFF_STONE_BLOCK.get(),
-            biomeConfig.SURFACE_CLIFF_STONE_BLOCK_META.get(),
-            (IBlockState)Blocks.STONE.getDefaultState()
+        cliffStonePixel = getConfigPixel(
+            biomeConfig.SURFACE_CLIFF_STONE_PIXEL,
+            biomeConfig.SURFACE_CLIFF_STONE_PIXEL_META,
+            (IPixelState)Pixels.STONE
         );
 
-        cliffCobbleBlock = getConfigBlock(
-            biomeConfig.SURFACE_CLIFF_COBBLE_BLOCK.get(),
-            biomeConfig.SURFACE_CLIFF_COBBLE_BLOCK_META.get(),
-            (IBlockState)Blocks.COBBLESTONE.getDefaultState()
+        cliffCobblePixel = getConfigPixel(
+            biomeConfig.SURFACE_CLIFF_COBBLE_PIXEL,
+            biomeConfig.SURFACE_CLIFF_COBBLE_PIXEL_META,
+            (IPixelState)Pixels.COBBLESTONE
         );
     }
 
-    protected void initShadowBlocks()
+    protected void initShadowPixels()
     {
 
-            shadowStoneBlock = getConfigBlock(
-                rtgConfig.SHADOW_STONE_BLOCK_ID.get(),
-                rtgConfig.SHADOW_STONE_BLOCK_META.get(),
-                (IBlockState)Blocks.CLAY
-            //BlockUtil.getStateClay(9)
+        shadowStonePixel = getConfigPixel(
+            rtgConfig.SHADOW_STONE_PIXEL_ID,
+            rtgConfig.SHADOW_STONE_PIXEL_META,
+            PixelUtil.getStateClay(9)
         );
 
-        shadowDesertBlock = getConfigBlock(
-            rtgConfig.SHADOW_DESERT_BLOCK_ID.get(),
-            rtgConfig.SHADOW_DESERT_BLOCK_META.get(),
-                (IBlockState)Blocks.CLAY
-            //BlockUtil.getStateClay(0)
+        shadowDesertPixel = getConfigPixel(
+            rtgConfig.SHADOW_DESERT_PIXEL_ID,
+            rtgConfig.SHADOW_DESERT_PIXEL_META,
+            PixelUtil.getStateClay(0)
         );
     }
 }

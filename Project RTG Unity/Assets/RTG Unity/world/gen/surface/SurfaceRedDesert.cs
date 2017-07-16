@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -20,14 +20,14 @@
     public class SurfaceRedDesert : SurfaceBase
     {
 
-        private IBlockState cliffBlock1;
-        private IBlockState bottomBlock;
+        private IPixelState cliffPixel1;
+        private IPixelState bottomPixel;
 
-        public SurfaceRedDesert(BiomeConfig config) : base(config, BlockUtil.getStateSand(1), BlockUtil.getStateSand(1))
+        public SurfaceRedDesert(BiomeConfig config) : base(config, PixelUtil.getStateSand(1), PixelUtil.getStateSand(1))
         {
 
-            bottomBlock = (IBlockState)Blocks.SANDSTONE.getDefaultState();
-            cliffBlock1 = BlockUtil.getStateClay(14);
+            bottomPixel = (IPixelState)Pixels.SANDSTONE;
+            cliffPixel1 = PixelUtil.getStateClay(14);
         }
 
         override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
@@ -39,12 +39,12 @@
 
             for (int k = 255; k > -1; k--)
             {
-                Block b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                Pixel b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -52,22 +52,22 @@
                     {
                         if (depth < 6)
                         {
-                            primer.setBlockState(x, k, z, cliffBlock1);
+                            primer.setPixelState(x, k, z, cliffPixel1);
                         }
                     }
                     else if (depth < 6)
                     {
                         if (depth == 0 && k > 61)
                         {
-                            primer.setBlockState(x, k, z, topBlock);
+                            primer.setPixelState(x, k, z, topPixel);
                         }
                         else if (depth < 4)
                         {
-                            primer.setBlockState(x, k, z, fillerBlock);
+                            primer.setPixelState(x, k, z, fillerPixel);
                         }
                         else
                         {
-                            primer.setBlockState(x, k, z, (Block)bottomBlock.getBlock().getDefaultState());
+                            primer.setPixelState(x, k, z, bottomPixel.getPixel());
                         }
                     }
                 }

@@ -2,12 +2,12 @@
 {
     using System;
 
-    //import net.minecraft.block.BlockDoublePlant;
-    using generic.block;
-    //import net.minecraft.block.material.Material;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.util.math.BlockPos;
+    //import net.minecraft.pixel.PixelDoublePlant;
+    using generic.pixel;
+    //import net.minecraft.pixel.material.Material;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
     //import net.minecraft.world.World;
     using generic.world;
@@ -27,9 +27,9 @@
         }
 
         /**
-         * Checks a given coordinate to see if it is surrounded by a given block, usually air.
+         * Checks a given coordinate to see if it is surrounded by a given pixel, usually air.
          */
-        public bool isSurroundedByBlock(IBlockState checkBlock, int checkDistance, SurroundCheckType checkType, Random rand, int x, int y, int z)
+        public bool isSurroundedByPixel(IPixelState checkPixel, int checkDistance, SurroundCheckType checkType, Random rand, int x, int y, int z)
         {
 
             switch (checkType)
@@ -46,7 +46,7 @@
                                 continue;
                             }
 
-                            if (this.world.getBlockState(new BlockPos(x + ix, y, z + iz)) != checkBlock)
+                            if (this.world.getPixelState(new PixelPos(x + ix, y, z + iz)) != checkPixel)
                             {
                                 return false;
                             }
@@ -60,19 +60,19 @@
                     for (int i = checkDistance; i > 0; i--)
                     {
 
-                        if (this.world.getBlockState(new BlockPos(x, y, z + i)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x, y, z + i)) != checkPixel)
                         {
                             return false;
                         }
-                        if (this.world.getBlockState(new BlockPos(x, y, z - i)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x, y, z - i)) != checkPixel)
                         {
                             return false;
                         }
-                        if (this.world.getBlockState(new BlockPos(x + i, y, z)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x + i, y, z)) != checkPixel)
                         {
                             return false;
                         }
-                        if (this.world.getBlockState(new BlockPos(x - i, y, z)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x - i, y, z)) != checkPixel)
                         {
                             return false;
                         }
@@ -85,19 +85,19 @@
                     for (int i = checkDistance; i > 0; i--)
                     {
 
-                        if (this.world.getBlockState(new BlockPos(x + i, y, z + i)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x + i, y, z + i)) != checkPixel)
                         {
                             return false;
                         }
-                        if (this.world.getBlockState(new BlockPos(x + i, y, z - i)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x + i, y, z - i)) != checkPixel)
                         {
                             return false;
                         }
-                        if (this.world.getBlockState(new BlockPos(x - i, y, z + i)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x - i, y, z + i)) != checkPixel)
                         {
                             return false;
                         }
-                        if (this.world.getBlockState(new BlockPos(x - i, y, z - i)) != checkBlock)
+                        if (this.world.getPixelState(new PixelPos(x - i, y, z - i)) != checkPixel)
                         {
                             return false;
                         }
@@ -107,13 +107,13 @@
 
                 case SurroundCheckType.UP: // Checks above coord.
 
-                    IBlockState b;
+                    IPixelState b;
                     for (int i = checkDistance; i > 0; i--)
                     {
 
-                        b = this.world.getBlockState(new BlockPos(x, y + i, z));
+                        b = this.world.getPixelState(new PixelPos(x, y + i, z));
 
-                        if (b != checkBlock)
+                        if (b != checkPixel)
                         {
                             return false;
                         }
@@ -129,30 +129,30 @@
         }
 
         /**
-         * Checks to see if a given block is above a given coordinate.
-         * Use isSurroundedByBlock() with SurroundCheckType.UP if you want to check all blocks above.
+         * Checks to see if a given pixel is above a given coordinate.
+         * Use isSurroundedByPixel() with SurroundCheckType.UP if you want to check all pixels above.
          */
-        public bool isBlockAbove(IBlockState checkBlock, int checkDistance, World world, int x, int y, int z, bool materialCheck)
+        public bool isPixelAbove(IPixelState checkPixel, int checkDistance, World world, int x, int y, int z, bool materialCheck)
         {
 
-            //Material checkBlockMaterial = checkBlock.getMaterial();
-            IBlockState blockAbove;
+            //Material checkPixelMaterial = checkPixel.getMaterial();
+            IPixelState pixelAbove;
             //Material m;
 
             for (int i = 1; i <= checkDistance; i++)
             {
 
-                blockAbove = world.getBlockState(new BlockPos(x, y + checkDistance, z));
+                pixelAbove = world.getPixelState(new PixelPos(x, y + checkDistance, z));
 
                 //if (materialCheck)
                 //{
-                //    m = blockAbove.getMaterial();
-                //    if (m != checkBlockMaterial)
+                //    m = pixelAbove.getMaterial();
+                //    if (m != checkPixelMaterial)
                 //    {
                 //        return false;
                 //    }
                 //}
-                //else if (blockAbove != checkBlock)
+                //else if (pixelAbove != checkPixel)
                 //{
                 return false;
                 //}
@@ -161,18 +161,18 @@
             return true;
         }
 
-        public void setDoublePlant(BlockPos lowerPos, IBlockState doublePlant, int flag)
+        public void setDoublePlant(PixelPos lowerPos, IPixelState doublePlant, int flag)
         {
-            this.world.setBlockState(lowerPos, doublePlant.withProperty(0), flag);
-            //this.world.setBlockState(lowerPos.up(), doublePlant.withProperty(BlockDoublePlant.HALF, BlockDoublePlant.UPPER), flag);
+            this.world.setPixelState(lowerPos, doublePlant.withProperty(0));
+            this.world.setPixelState(lowerPos.up(), doublePlant.withProperty(1)); //PixelDoublePlant.HALF  || PixelDoublePlant.UPPER));
         }
 
-        public void setDoublePlant(BlockPos lowerPos, IBlockState doublePlant)
+        public void setDoublePlant(PixelPos lowerPos, IPixelState doublePlant)
         {
             this.setDoublePlant(lowerPos, doublePlant, 2);
         }
 
-        public bool canSnowAt(BlockPos pos, bool checkLight)
+        public bool canSnowAt(PixelPos pos, bool checkLight)
         {
 
             //if (!this.world.canSnowAt(pos, true))
@@ -182,9 +182,9 @@
 
             if (this.appalachia)
             {
-                BlockPos groundPos = pos.down();
-                string groundBlockName = this.world.getBlockState(groundPos).getBlock().ToString();
-                if (groundBlockName.Contains("fallen") && groundBlockName.Contains("leaves"))
+                PixelPos groundPos = pos.down();
+                string groundPixelName = this.world.getPixelState(groundPos).getPixel().ToString();
+                if (groundPixelName.Contains("fallen") && groundPixelName.Contains("leaves"))
                 {
                     return false;
                 }

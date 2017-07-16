@@ -6,7 +6,6 @@
 
 namespace rtg.api.util.noise
 {
-
     /**
      * @author Zeno410
      * @version $Revision: 1.3$
@@ -15,9 +14,9 @@ namespace rtg.api.util.noise
     public class OpenSimplexNoise : SimplexOctave
     {
 
-        public readonly SimplexOctave[] octaves;
-        private static readonly int OCTAVE_COUNT = 10;  // perhaps should be a variable
-                                                        // but that creates coordination issues
+        internal readonly SimplexOctave[] octaves;
+        private static readonly int OCTAVE_COUNT = 10;// perhaps should be a variable
+                                                      // but that creates coordination issues
 
 
         public OpenSimplexNoise(long seed)
@@ -37,25 +36,25 @@ namespace rtg.api.util.noise
         //Alias for 1D
         public float noise1(float x)
         {
-            return (float)octaves[0].Evaluate(x, 0.5f);
+            return octaves[0].noise1(x);
         }
 
         //Alias for 2D
         public float noise2(float x, float y)
         {
-            return (float)octaves[0].Evaluate(x, y);
+            return (float)octaves[0].noise(x, y);
         }
 
         //Alias for 3D
         public float noise3(float x, float y, float z)
         {
-            return (float)octaves[0].Evaluate(x, y, z);
+            return (float)octaves[0].noise(x, y, z);
         }
 
         //Alias for 3D (again)
         public double improvedNoise(double x, double y, double z)
         {
-            return octaves[0].Evaluate(x, y, z);
+            return octaves[0].noise(x, y, z);
         }
 
         /*
@@ -65,13 +64,13 @@ namespace rtg.api.util.noise
         //2D OpenSimplex noise (KdotJPG)
         public double noise(double x, double y)
         {
-            return (float)octaves[0].Evaluate(x, y);
+            return octaves[0].noise(x, y);
         }
 
         //3D OpenSimplex Noise (DigitalShadow)
         public double noise(double x, double y, double z)
         {
-            return octaves[0].Evaluate(x, y, z);
+            return octaves[0].noise(x, y, z);
         }
 
         public SimplexOctave octave(int index)

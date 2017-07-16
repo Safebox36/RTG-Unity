@@ -9,8 +9,8 @@ In order to convert the code as close to the original as possible, some standard
 - All **math functions** will use **System** instead of **UnityEngine** to allow for a greater level of functionality
 - **Static code blocks** in Java will be named **static void temp()** in Unity until such a time when it can be implemented properly
 - If **interface** is not used then it will be **implemented regardless**
-- Heightmap data will be saved in a bitmap file until such a time when a custom file format can be created. R will represent height, G will represent block and B will represent block variations (such as biome or state).
-- Due to difficulty converting OpenSimplexNoise to C#, all relevant scripts will be substituted with digitalshadow's C# port with the values of the original Java scripts.
+- **Heightmap data** will be saved in a **bitmap file** until such a time when a custom file format can be created. **R** will represent **height**, **G** will represent **block** and **B** will represent **block variations** (such as biome or state).
+- ~~Due to difficulty converting **OpenSimplexNoise** to C#, all relevant scripts will be substituted with **digitalshadow's C# port** with the values of the original Java scripts.~~ **Fixed as of Progress Update 5!**
 ## Plan
 ### Stage 1 - Heightmap
 - Jave to C# code conversion
@@ -36,3 +36,7 @@ Terrain code has been created and completed (with the exception of a few); block
 Prior to today, I renamed every IBlockState to Block but have since implemented the use of IBlockState and will need to go back and undo all previous changes so as to keep consistency with the original code.
 ### 4 - Terrain and Surface Separation (4/7/17)
 I have fully converted the world/gen/terrain scripts and am now moving on to the world/gen/surface scripts. I spoke to WhichOnesPink on the RTG Discord group and he's explained that world/gen/terrain is responsible for the height values while world/gen/surface is responsible for the blocks that will appear at those height values. With that in mind, I've decided to deviate quite dramatically from the original source code for converting the surface scripts to C# to take into account the raw numbers rather than the block values themselves. Having said that, I will use the existing block values as a guideline before adapting it further.
+### 5 - Block to Pixel (14/7/17)
+I spent the majority of today trying to separate any ties to Minecraft by changing all references of Block to Pixel. The code works as well as it previously did but I also attempted to add the Biome scripts again with a little more success. They're not fully implemented and one part of the code relies on Minecraft's generation scripts to carry out the event, meaning I either need to find a workaround or neglect these scripts altogether.
+
+I'm hoping to find a solution to the problem but thus far I've been unsuccessful. Additionally, I've managed to convert the Java version of OpenSimplexNoise from the original project and replaced the existing implementation of digitalshadow's C# version. There were a few minor differences in how the code was handled but it shouldn't have been too noticeable either way. I've also attempted to convert several Biome scripts but have had to delete them due to heavy dependency on Minecraft code.

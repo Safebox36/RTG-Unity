@@ -1,7 +1,7 @@
 ﻿namespace rtg.world.gen.surface
 {
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
     //import net.minecraft.world.chunk.ChunkPrimer;
@@ -15,7 +15,7 @@
 
         private float min;
 
-        public SurfaceMountainPolar(BiomeConfig config, IBlockState top, IBlockState fill, float minCliff) : base(config, top, fill)
+        public SurfaceMountainPolar(BiomeConfig config, IPixelState top, IPixelState fill, float minCliff) : base(config, top, fill)
         {
             min = minCliff;
         }

@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -21,7 +21,7 @@
     public class SurfacePolar : SurfaceBase
     {
 
-        public SurfacePolar(BiomeConfig config, IBlockState top, IBlockState fill) : base(config, top, fill)
+        public SurfacePolar(BiomeConfig config, IPixelState top, IPixelState fill) : base(config, top, fill)
         {
 
         }
@@ -45,15 +45,15 @@
                 }
             }
 
-            Block b;
+            Pixel b;
             for (int k = 255; k > -1; k--)
             {
-                b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -61,34 +61,34 @@
                     {
                         if (grass && depth < 4)
                         {
-                            primer.setBlockState(x, k, z, fillerBlock);
+                            primer.setPixelState(x, k, z, fillerPixel);
                         }
                         else if (depth == 0)
                         {
                             if (rand.Next(2) == 0)
                             {
 
-                                primer.setBlockState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
+                                primer.setPixelState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
                             }
                             else
                             {
 
-                                primer.setBlockState(x, k, z, hcCobble(rtgWorld, i, j, x, z, k));
+                                primer.setPixelState(x, k, z, hcCobble(rtgWorld, i, j, x, z, k));
                             }
                         }
                     }
                     else if (depth > -1 && depth < 9)
                     {
-                        primer.setBlockState(x, k, z, (Block)Blocks.SNOW.getDefaultState());
+                        primer.setPixelState(x, k, z, Pixels.SNOW);
                         if (depth == 0 && k > 61 && k < 254)
                         {
                             SnowHeightCalculator.calc(x, k, z, primer, noise);
                         }
                     }
                 }
-                else if (!water && b == Blocks.WATER)
+                else if (!water && b == Pixels.WATER)
                 {
-                    primer.setBlockState(x, k, z, (Block)Blocks.ICE.getDefaultState());
+                    primer.setPixelState(x, k, z, Pixels.ICE);
                     water = true;
                 }
             }

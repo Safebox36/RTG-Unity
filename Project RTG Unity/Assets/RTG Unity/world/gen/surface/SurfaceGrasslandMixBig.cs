@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -21,21 +21,21 @@
     public class SurfaceGrasslandMixBig : SurfaceBase
     {
 
-        private IBlockState mixBlockTop;
-        private IBlockState mixBlockFill;
-        private IBlockState cliffBlock1;
-        private IBlockState cliffBlock2;
+        private IPixelState mixPixelTop;
+        private IPixelState mixPixelFill;
+        private IPixelState cliffPixel1;
+        private IPixelState cliffPixel2;
         private float width;
         private float height;
         private float smallW;
         private float smallS;
 
-        public SurfaceGrasslandMixBig(BiomeConfig config, IBlockState top, IBlockState filler, IBlockState mixTop, IBlockState mixFill, IBlockState cliff1, IBlockState cliff2, float mixWidth, float mixHeight, float smallWidth, float smallStrength) : base(config, top, filler)
+        public SurfaceGrasslandMixBig(BiomeConfig config, IPixelState top, IPixelState filler, IPixelState mixTop, IPixelState mixFill, IPixelState cliff1, IPixelState cliff2, float mixWidth, float mixHeight, float smallWidth, float smallStrength) : base(config, top, filler)
         {
-            mixBlockTop = mixTop;
-            mixBlockFill = mixFill;
-            cliffBlock1 = cliff1;
-            cliffBlock2 = cliff2;
+            mixPixelTop = mixTop;
+            mixPixelFill = mixFill;
+            cliffPixel1 = cliff1;
+            cliffPixel2 = cliff2;
 
             width = mixWidth;
             height = mixHeight;
@@ -54,12 +54,12 @@
 
             for (int k = 255; k > -1; k--)
             {
-                Block b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                Pixel b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -67,11 +67,11 @@
                     {
                         if (depth > -1 && depth < 2)
                         {
-                            primer.setBlockState(x, k, z, rand.Next(3) == 0 ? cliffBlock2 : cliffBlock1);
+                            primer.setPixelState(x, k, z, rand.Next(3) == 0 ? cliffPixel2 : cliffPixel1);
                         }
                         else if (depth < 10)
                         {
-                            primer.setBlockState(x, k, z, cliffBlock1);
+                            primer.setPixelState(x, k, z, cliffPixel1);
                         }
                     }
                     else
@@ -80,23 +80,23 @@
                         {
                             if (simplex.noise2(i / width, j / width) + simplex.noise2(i / smallW, j / smallW) * smallS > height)
                             {
-                                primer.setBlockState(x, k, z, mixBlockTop);
+                                primer.setPixelState(x, k, z, mixPixelTop);
                                 mix = true;
                             }
                             else
                             {
-                                primer.setBlockState(x, k, z, topBlock);
+                                primer.setPixelState(x, k, z, topPixel);
                             }
                         }
                         else if (depth < 4)
                         {
                             if (mix)
                             {
-                                primer.setBlockState(x, k, z, mixBlockFill);
+                                primer.setPixelState(x, k, z, mixPixelFill);
                             }
                             else
                             {
-                                primer.setBlockState(x, k, z, fillerBlock);
+                                primer.setPixelState(x, k, z, fillerPixel);
                             }
                         }
                     }

@@ -1,8 +1,8 @@
 ﻿namespace rtg.api.util
 {
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.util.math.BlockPos;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.util.math.PixelPos;
     //import net.minecraft.world.World;
     using generic.world;
     //import net.minecraft.world.chunk.Chunk;
@@ -12,13 +12,13 @@
  *
  * @author Zeno410
  */
-public class BlockForcer
+public class PixelForcer
 {
 
-    public void placeBlock(World target, int x, int y, int z, IBlockState placed)
+    public void placePixel(World target, int x, int y, int z, IPixelState placed)
     {
-        //Chunk chunk = target.getChunkFromBlockCoords(new BlockPos(x, 0, z));
-        //chunk.setBlockState(new BlockPos(x & 15, y, z & 15), placed);
+        //Chunk chunk = target.getChunkFromPixelCoords(new PixelPos(x, 0, z));
+        //chunk.setPixelState(new PixelPos(x & 15, y, z & 15), placed);
     }
 }
 }

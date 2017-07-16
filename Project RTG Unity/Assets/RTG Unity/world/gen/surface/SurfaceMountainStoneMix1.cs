@@ -2,11 +2,11 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -28,10 +28,10 @@
         private float sStrength = 65f;
         private float cCliff = 1.5f;
 
-        private IBlockState mix;
+        private IPixelState mix;
         private float mixHeight;
 
-        public SurfaceMountainStoneMix1(BiomeConfig config, IBlockState top, IBlockState fill, float minCliff, float stoneCliff, float stoneHeight, float stoneStrength, float clayCliff, IBlockState mixBlock, float mixSize) : base(config, top, fill)
+        public SurfaceMountainStoneMix1(BiomeConfig config, IPixelState top, IPixelState fill, float minCliff, float stoneCliff, float stoneHeight, float stoneStrength, float clayCliff, IPixelState mixPixel, float mixSize) : base(config, top, fill)
         {
 
             min = minCliff;
@@ -41,7 +41,7 @@
             sStrength = stoneStrength;
             cCliff = clayCliff;
 
-            mix = mixBlock;
+            mix = mixPixel;
             mixHeight = mixSize;
         }
 
@@ -54,15 +54,15 @@
             int cliff = 0;
             bool m = false;
 
-            Block b;
+            Pixel b;
             for (int k = 255; k > -1; k--)
             {
-                b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -84,52 +84,52 @@
                             if (rand.Next(3) == 0)
                             {
 
-                                primer.setBlockState(x, k, z, hcCobble(rtgWorld, i, j, x, z, k));
+                                primer.setPixelState(x, k, z, hcCobble(rtgWorld, i, j, x, z, k));
                             }
                             else
                             {
 
-                                primer.setBlockState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
+                                primer.setPixelState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
                             }
                         }
                         else if (cliff == 2)
                         {
-                            primer.setBlockState(x, k, z, getShadowStoneBlock(rtgWorld, i, j, x, z, k));
+                            primer.setPixelState(x, k, z, getShadowStonePixel(rtgWorld, i, j, x, z, k));
                         }
                         else if (k < 63)
                         {
                             if (k < 62)
                             {
-                                primer.setBlockState(x, k, z, fillerBlock);
+                                primer.setPixelState(x, k, z, fillerPixel);
                             }
                             else
                             {
-                                primer.setBlockState(x, k, z, topBlock);
+                                primer.setPixelState(x, k, z, topPixel);
                             }
                         }
                         else if (simplex.noise2(i / 12f, j / 12f) > mixHeight)
                         {
-                            primer.setBlockState(x, k, z, mix);
+                            primer.setPixelState(x, k, z, mix);
                             m = true;
                         }
                         else
                         {
-                            primer.setBlockState(x, k, z, topBlock);
+                            primer.setPixelState(x, k, z, topPixel);
                         }
                     }
                     else if (depth < 6)
                     {
                         if (cliff == 1)
                         {
-                            primer.setBlockState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
+                            primer.setPixelState(x, k, z, hcStone(rtgWorld, i, j, x, z, k));
                         }
                         else if (cliff == 2)
                         {
-                            primer.setBlockState(x, k, z, getShadowStoneBlock(rtgWorld, i, j, x, z, k));
+                            primer.setPixelState(x, k, z, getShadowStonePixel(rtgWorld, i, j, x, z, k));
                         }
                         else
                         {
-                            primer.setBlockState(x, k, z, fillerBlock);
+                            primer.setPixelState(x, k, z, fillerPixel);
                         }
                     }
                 }

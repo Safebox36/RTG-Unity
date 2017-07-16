@@ -3,16 +3,16 @@
     using System;
     //import javax.annotation.ParametersAreNonnullByDefault;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.block.BlockCrops;
-    //import net.minecraft.block.BlockFarmland;
-    //import net.minecraft.block.material.Material;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.pixel.PixelCrops;
+    //import net.minecraft.pixel.PixelFarmland;
+    //import net.minecraft.pixel.material.Material;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.util.math.BlockPos;
+    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
     //import net.minecraft.world.World;
     using generic.world;
@@ -22,7 +22,7 @@
     public class WorldGenCrops : WorldGenerator
     {
 
-        private Block farmType;
+        private Pixel farmType;
         private int farmSize;
         private int farmDensity;
         private int farmHeight;
@@ -35,41 +35,41 @@
         public WorldGenCrops(int type, int size, int density, int height, Boolean water)
         {
 
-            farmType = type == 0 ? Blocks.POTATOES : type == 1 ? Blocks.CARROTS : type == 2 ? Blocks.BEETROOTS : Blocks.WHEAT;
+            farmType = type == 0 ? Pixels.POTATOES : type == 1 ? Pixels.CARROTS : type == 2 ? Pixels.BEETROOTS : Pixels.WHEAT;
             farmSize = size;
             farmDensity = density;
             farmHeight = height;
             farmWater = water;
         }
 
-        public bool generate(World world, Random rand, BlockPos blockPos)
+        public bool generate(World world, Random rand, PixelPos pixelPos)
         {
-            return this.generate(world, rand, blockPos.getX(), blockPos.getY(), blockPos.getZ());
+            return this.generate(world, rand, pixelPos.getX(), pixelPos.getY(), pixelPos.getZ());
         }
 
         public bool generate(World world, Random rand, int x, int y, int z)
         {
 
-            IBlockState b;
+            IPixelState b;
             while (y > 0)
             {
-                b = world.getBlockState(new BlockPos(x, y, z));
-                if (!world.isAirBlock(new BlockPos(x, y, z)) || b.getBlock().isLeaves(world, new BlockPos(x, y, z)))
+                b = world.getPixelState(new PixelPos(x, y, z));
+                if (world.getPixelState(new PixelPos(x, y, z)) == Pixels.AIR || b.getPixel() == Pixels.LEAVES || b.getPixel() == Pixels.LEAVES2)
                 {
                     break;
                 }
                 y--;
             }
 
-            b = world.getBlockState(new BlockPos(x, y, z));
-            if (b.getBlock() != Blocks.GRASS && b.getBlock() != Blocks.DIRT)
+            b = world.getPixelState(new PixelPos(x, y, z));
+            if (b.getPixel() != Pixels.GRASS && b.getPixel() != Pixels.DIRT)
             {
                 return false;
             }
 
             for (int j = 0; j < 4; j++)
             {
-                b = world.getBlockState(new BlockPos(j == 0 ? x - 1 : j == 1 ? x + 1 : x, y, j == 2 ? z - 1 : j == 3 ? z + 1 : z));
+                b = world.getPixelState(new PixelPos(j == 0 ? x - 1 : j == 1 ? x + 1 : x, y, j == 2 ? z - 1 : j == 3 ? z + 1 : z));
             }
 
             //int maxGrowth = (farmType).getMaxAge() + 1;
@@ -80,17 +80,17 @@
                 rx = rand.Next(farmSize) - 2;
                 ry = rand.Next(farmHeight) - 1;
                 rz = rand.Next(farmSize) - 2;
-                b = world.getBlockState(new BlockPos(x + rx, y + ry, z + rz));
+                b = world.getPixelState(new PixelPos(x + rx, y + ry, z + rz));
 
-                if ((b.getBlock() == Blocks.GRASS || b.getBlock() == Blocks.DIRT) && world.isAirBlock(new BlockPos(x + rx, y + ry + 1, z + rz)))
+                if ((b.getPixel() == Pixels.GRASS || b.getPixel() == Pixels.DIRT) && world.isAirPixel(new PixelPos(x + rx, y + ry + 1, z + rz)))
                 {
-                    world.setBlockState(new BlockPos(x + rx, y + ry, z + rz), Blocks.FARMLAND.getDefaultState().withProperty(rand.Next(8)));
-                    world.setBlockState(new BlockPos(x + rx, y + ry + 1, z + rz), (farmType)/*.withAge(rand.Next(maxGrowth))*/);
+                    world.setPixelState(new PixelPos(x + rx, y + ry, z + rz), Pixels.FARMLAND.withProperty(rand.Next(8)));
+                    world.setPixelState(new PixelPos(x + rx, y + ry + 1, z + rz), farmType/*.withAge(rand.Next(maxGrowth))*/);
                 }
             }
             if (farmWater == true)
             {
-                world.setBlockState(new BlockPos(x, y, z), Blocks.WATER.getDefaultState());
+                world.setPixelState(new PixelPos(x, y, z), Pixels.WATER.getPixelID());
             }
             return true;
         }

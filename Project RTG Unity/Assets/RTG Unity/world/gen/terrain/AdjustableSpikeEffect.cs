@@ -21,7 +21,7 @@
         override public float added(RTGWorld rtgWorld, float x, float y)
         {
 
-            float noise = (float)rtgWorld.simplex.octaves[octave].Evaluate((float)x / wavelength, (float)y / wavelength);
+            float noise = rtgWorld.simplex.octave(octave).noise2((float)x / wavelength, (float)y / wavelength);
             if (noise < minimumSimplex)
             {
                 noise = minimumSimplex;

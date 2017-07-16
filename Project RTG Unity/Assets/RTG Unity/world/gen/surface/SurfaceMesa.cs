@@ -2,9 +2,9 @@
 {
     using System;
 
-    //import net.minecraft.block.Block;
-    using generic.block;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
+    //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
@@ -22,7 +22,7 @@
 
         private int[] claycolor = new int[100];
 
-        public SurfaceMesa(BiomeConfig config, Block top, byte topByte, Block fill, byte fillByte) : base(config, top, fill)
+        public SurfaceMesa(BiomeConfig config, Pixel top, byte topByte, Pixel fill, byte fillByte) : base(config, top, fill)
         {
 
             int[] c = new int[] { 1, 8, 0 };
@@ -54,12 +54,12 @@
 
             for (int k = 255; k > -1; k--)
             {
-                Block b = primer.getBlockState(x, k, z).getBlock();
-                if (b == Blocks.AIR)
+                Pixel b = primer.getPixelState(x, k, z).getPixel();
+                if (b == Pixels.AIR)
                 {
                     depth = -1;
                 }
-                else if (b == Blocks.STONE)
+                else if (b == Pixels.STONE)
                 {
                     depth++;
 
@@ -67,35 +67,35 @@
                     {
                         if (cliff)
                         {
-                            primer.setBlockState(x, k, z, CanyonColour.MESA.getBlockForHeight(i, k, j));
+                            primer.setPixelState(x, k, z, CanyonColour.MESA.getPixelForHeight(i, k, j));
                         }
                         else
                         {
                             if (depth > 4)
                             {
-                                primer.setBlockState(x, k, z, CanyonColour.MESA.getBlockForHeight(i, k, j));
+                                primer.setPixelState(x, k, z, CanyonColour.MESA.getPixelForHeight(i, k, j));
                             }
                             else if (k > 77)
                             {
                                 if (rand.Next(5) == 0)
                                 {
-                                    primer.setBlockState(x, k, z, (Block)Blocks.DIRT.getDefaultState());
+                                    primer.setPixelState(x, k, z, Pixels.DIRT);
                                 }
                                 else
                                 {
                                     if (depth == 0)
                                     {
-                                        primer.setBlockState(x, k, z, topBlock);
+                                        primer.setPixelState(x, k, z, topPixel);
                                     }
                                     else
                                     {
-                                        primer.setBlockState(x, k, z, fillerBlock);
+                                        primer.setPixelState(x, k, z, fillerPixel);
                                     }
                                 }
                             }
                             else if (k < 69)
                             {
-                                primer.setBlockState(x, k, z, (Block)Blocks.DIRT.getDefaultState());
+                                primer.setPixelState(x, k, z, Pixels.DIRT);
                             }
                             else if (k < 78)
                             {
@@ -103,38 +103,38 @@
                                 {
                                     if (k < 72 && rand.Next(k - 69 + 1) == 0)
                                     {
-                                        primer.setBlockState(x, k, z, (Block)Blocks.DIRT.getDefaultState());
+                                        primer.setPixelState(x, k, z, Pixels.DIRT);
                                     }
                                     else if (rand.Next(5) == 0)
                                     {
-                                        primer.setBlockState(x, k, z, (Block)Blocks.DIRT.getDefaultState());
+                                        primer.setPixelState(x, k, z, Pixels.DIRT);
                                     }
                                     else
                                     {
-                                        primer.setBlockState(x, k, z, topBlock);
+                                        primer.setPixelState(x, k, z, topPixel);
                                     }
                                 }
                                 else
                                 {
-                                    primer.setBlockState(x, k, z, fillerBlock);
+                                    primer.setPixelState(x, k, z, fillerPixel);
                                 }
                             }
                             else
                             {
                                 if (depth == 0)
                                 {
-                                    primer.setBlockState(x, k, z, topBlock);
+                                    primer.setPixelState(x, k, z, topPixel);
                                 }
                                 else
                                 {
-                                    primer.setBlockState(x, k, z, fillerBlock);
+                                    primer.setPixelState(x, k, z, fillerPixel);
                                 }
                             }
                         }
                     }
                     else if (k > 63)
                     {
-                        primer.setBlockState(x, k, z, CanyonColour.MESA.getBlockForHeight(i, k, j));
+                        primer.setPixelState(x, k, z, CanyonColour.MESA.getPixelForHeight(i, k, j));
                     }
                 }
             }

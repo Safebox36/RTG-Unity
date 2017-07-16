@@ -1,169 +1,169 @@
 ﻿namespace rtg.api.util
 {
-    //import net.minecraft.block.*;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.*;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.item.EnumDyeColor;
+    //import net.minecraft.item.Colors;
 
-    public class BlockUtil
+    public class PixelUtil
     {
 
-        public static Block getBlock(string id)
+        public static Pixel getPixel(string id)
         {
-            return Block.getBlockFromName(id);
+            return new Pixel();// Pixel.getPixelFromName(id);
         }
 
-        public static IBlockState getStateSand(int meta)
+        public static IPixelState getStateSand(int meta)
         {
 
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.SAND.getDefaultState();
+                    return (IPixelState)Pixels.SAND;
                 case 1:
-                    return (IBlockState)Blocks.SAND.getDefaultState().withProperty(Blocks.SAND, EnumDyeColor.RED); //BlockSand.VARIANT, BlockSand.EnumType.RED_SAND);
+                    return (IPixelState)Pixels.SAND.withProperty(PixelSand.RED_SAND); //PixelSand.VARIANT, PixelSand.EnumType.RED_SAND);
                 default:
-                    return (IBlockState)Blocks.SAND.getDefaultState();
+                    return (IPixelState)Pixels.SAND;
             }
         }
 
-        public static IBlockState getStateClay(int meta)
+        public static IPixelState getStateClay(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.WHITE);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.WHITE);
                 case 1:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.ORANGE);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.ORANGE);
                 case 2:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.MAGENTA);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.MAGENTA);
                 case 3:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.LIGHT_BLUE);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.LIGHT_BLUE);
                 case 4:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.YELLOW);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.YELLOW);
                 case 5:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.LIME);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.LIME);
                 case 6:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.PINK);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.PINK);
                 case 7:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.GRAY);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.GRAY);
                 case 8:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.SILVER);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.SILVER);
                 case 9:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.CYAN);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.CYAN);
                 case 10:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.PURPLE);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.PURPLE);
                 case 11:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.BLUE);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.BLUE);
                 case 12:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.BROWN);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.BROWN);
                 case 13:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.GREEN);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.GREEN);
                 case 14:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.RED);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.RED);
                 case 15:
-                    return (IBlockState)Blocks.STAINED_HARDENED_CLAY.getDefaultState().withProperty(EnumDyeColor.BLACK);
+                    return (IPixelState)Pixels.STAINED_HARDENED_CLAY.withProperty(Colors.BLACK);
                 default:
-                    return (IBlockState)Blocks.HARDENED_CLAY.getDefaultState();
+                    return (IPixelState)Pixels.HARDENED_CLAY;
             }
         }
 
-        public static IBlockState getStateLog(int meta)
+        public static IPixelState getStateLog(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.LOG.getDefaultState();
+                    return (IPixelState)Pixels.LOG;
                 case 1:
-                    return (IBlockState)Blocks.LOG.getDefaultState().withProperty(BlockPlanks.SPRUCE);
+                    return (IPixelState)Pixels.LOG.withProperty(PixelPlanks.SPRUCE);
                 case 2:
-                    return (IBlockState)Blocks.LOG.getDefaultState().withProperty(BlockPlanks.BIRCH);
+                    return (IPixelState)Pixels.LOG.withProperty(PixelPlanks.BIRCH);
                 case 3:
-                    return (IBlockState)Blocks.LOG.getDefaultState().withProperty(BlockPlanks.JUNGLE);
+                    return (IPixelState)Pixels.LOG.withProperty(PixelPlanks.JUNGLE);
                 default:
-                    return (IBlockState)Blocks.LOG.getDefaultState();
+                    return (IPixelState)Pixels.LOG;
             }
         }
 
-        public static IBlockState getStateLeaf(int meta)
+        public static IPixelState getStateLeaf(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.LEAVES.getDefaultState();
+                    return (IPixelState)Pixels.LEAVES;
                 case 1:
-                    return (IBlockState)Blocks.LEAVES.getDefaultState().withProperty(BlockPlanks.SPRUCE);
+                    return (IPixelState)Pixels.LEAVES.withProperty(PixelPlanks.SPRUCE);
                 case 2:
-                    return (IBlockState)Blocks.LEAVES.getDefaultState().withProperty(BlockPlanks.BIRCH);
+                    return (IPixelState)Pixels.LEAVES.withProperty(PixelPlanks.BIRCH);
                 case 3:
-                    return (IBlockState)Blocks.LEAVES.getDefaultState().withProperty(BlockPlanks.JUNGLE);
+                    return (IPixelState)Pixels.LEAVES.withProperty(PixelPlanks.JUNGLE);
                 default:
-                    return (IBlockState)Blocks.LEAVES.getDefaultState();
+                    return (IPixelState)Pixels.LEAVES;
             }
         }
 
-        public static IBlockState getStateLog2(int meta)
+        public static IPixelState getStateLog2(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.LOG2.getDefaultState();
+                    return (IPixelState)Pixels.LOG2;
                 case 1:
-                    return (IBlockState)Blocks.LOG2.getDefaultState().withProperty(BlockPlanks.DARK_OAK);
+                    return (IPixelState)Pixels.LOG2.withProperty(PixelPlanks.DARK_OAK);
                 default:
-                    return (IBlockState)Blocks.LOG2.getDefaultState();
+                    return (IPixelState)Pixels.LOG2;
             }
         }
 
-        public static IBlockState getStateLeaf2(int meta)
+        public static IPixelState getStateLeaf2(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.LEAVES2.getDefaultState();
+                    return (IPixelState)Pixels.LEAVES2;
                 case 1:
-                    return (IBlockState)Blocks.LEAVES2.getDefaultState().withProperty(BlockPlanks.DARK_OAK);
+                    return (IPixelState)Pixels.LEAVES2.withProperty(PixelPlanks.DARK_OAK);
                 default:
-                    return (IBlockState)Blocks.LEAVES2.getDefaultState();
+                    return (IPixelState)Pixels.LEAVES2;
             }
         }
 
-        public static IBlockState getStateDirt(int meta)
+        public static IPixelState getStateDirt(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.DIRT.getDefaultState();
+                    return (IPixelState)Pixels.DIRT;
                 case 1:
-                    return (IBlockState)Blocks.DIRT.getDefaultState().withProperty(BlockDirt.COARSE_DIRT);
+                    return (IPixelState)Pixels.DIRT.withProperty(PixelDirt.COARSE_DIRT);
                 case 2:
-                    return (IBlockState)Blocks.DIRT.getDefaultState().withProperty(BlockDirt.PODZOL);
+                    return (IPixelState)Pixels.DIRT.withProperty(PixelDirt.PODZOL);
                 default:
-                    return (IBlockState)Blocks.DIRT.getDefaultState();
+                    return (IPixelState)Pixels.DIRT;
             }
         }
 
-        public static IBlockState getStateSapling(int meta)
+        public static IPixelState getStateSapling(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState();
+                    return (IPixelState)Pixels.SAPLING;
                 case 1:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState().withProperty(BlockPlanks.SPRUCE);
+                    return (IPixelState)Pixels.SAPLING.withProperty(PixelPlanks.SPRUCE);
                 case 2:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState().withProperty(BlockPlanks.BIRCH);
+                    return (IPixelState)Pixels.SAPLING.withProperty(PixelPlanks.BIRCH);
                 case 3:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState().withProperty(BlockPlanks.JUNGLE);
+                    return (IPixelState)Pixels.SAPLING.withProperty(PixelPlanks.JUNGLE);
                 case 4:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState().withProperty(BlockPlanks.ACACIA);
+                    return (IPixelState)Pixels.SAPLING.withProperty(PixelPlanks.ACACIA);
                 case 5:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState().withProperty(BlockPlanks.DARK_OAK);
+                    return (IPixelState)Pixels.SAPLING.withProperty(PixelPlanks.DARK_OAK);
                 default:
-                    return (IBlockState)Blocks.SAPLING.getDefaultState();
+                    return (IPixelState)Pixels.SAPLING;
             }
         }
 
@@ -186,12 +186,12 @@
          * 14	Rose Bush
          * 15	Peony
          */
-        public static IBlockState getStateFlower(int meta)
+        public static IPixelState getStateFlower(int meta)
         {
             switch (meta)
             {
                 case 0:
-                    return (IBlockState)Blocks.RED_FLOWER.getDefaultState();
+                    return (IPixelState)Pixels.RED_FLOWER;
                 case 1:
                 case 2:
                 case 3:
@@ -200,23 +200,23 @@
                 case 6:
                 case 7:
                 case 8:
-                    return (IBlockState)Blocks.RED_FLOWER.getStateFromMeta(meta);
+                    return (IPixelState)Pixels.RED_FLOWER;
                 case 9:
-                    return (IBlockState)Blocks.YELLOW_FLOWER.getDefaultState();
+                    return (IPixelState)Pixels.YELLOW_FLOWER;
                 case 10:
-                    return (IBlockState)Blocks.DOUBLE_PLANT.getDefaultState().withProperty(BlockDoublePlant.SUNFLOWER);
+                    return (IPixelState)Pixels.DOUBLE_PLANT.withProperty(PixelDoublePlant.SUNFLOWER);
                 case 11:
-                    return (IBlockState)Blocks.DOUBLE_PLANT.getDefaultState().withProperty(BlockDoublePlant.SYRINGA);
+                    return (IPixelState)Pixels.DOUBLE_PLANT.withProperty(PixelDoublePlant.SYRINGA);
                 case 12:
-                    return (IBlockState)Blocks.DOUBLE_PLANT.getDefaultState().withProperty(BlockDoublePlant.GRASS);
+                    return (IPixelState)Pixels.DOUBLE_PLANT.withProperty(PixelDoublePlant.GRASS);
                 case 13:
-                    return (IBlockState)Blocks.DOUBLE_PLANT.getDefaultState().withProperty(BlockDoublePlant.FERN);
+                    return (IPixelState)Pixels.DOUBLE_PLANT.withProperty(PixelDoublePlant.FERN);
                 case 14:
-                    return (IBlockState)Blocks.DOUBLE_PLANT.getDefaultState().withProperty(BlockDoublePlant.ROSE);
+                    return (IPixelState)Pixels.DOUBLE_PLANT.withProperty(PixelDoublePlant.ROSE);
                 case 15:
-                    return (IBlockState)Blocks.DOUBLE_PLANT.getDefaultState().withProperty(BlockDoublePlant.PAEONIA);
+                    return (IPixelState)Pixels.DOUBLE_PLANT.withProperty(PixelDoublePlant.PAEONIA);
                 default:
-                    return (IBlockState)Blocks.RED_FLOWER.getStateFromMeta(meta);
+                    return (IPixelState)Pixels.RED_FLOWER;
             }
         }
     }

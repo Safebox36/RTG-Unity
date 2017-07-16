@@ -17,7 +17,7 @@
         public readonly OpenSimplexNoise simplex;
         public readonly CellNoise cell;
         public readonly System.Random rand;
-        public readonly SimplexOctave surfaceJitter = new SimplexOctave(); //removed disk, might affect project
+        public readonly SimplexOctave.Disk surfaceJitter = new SimplexOctave.Disk(); //removed disk, might affect project
 
         public RTGWorld(World world)
         {

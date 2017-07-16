@@ -7,24 +7,19 @@
 
         }
 
-        public block.Block getBlockState(int index)
+        public pixel.Pixel getPixelState(int index)
         {
-            return new block.Block();
+            return new pixel.Pixel();
         }
 
-        public block.Block getBlockState(int x, int y, int z)
+        public pixel.Pixel getPixelState(int x, int y, int z)
         {
-            return new block.Block();
+            return new pixel.Pixel();
         }
 
-        public void setBlockState(int index, block.Block state)
+        public void setPixelState(int x, int y, int z, pixel.Pixel state)
         {
-
-        }
-
-        public void setBlockState(int x, int y, int z, block.Block state)
-        {
-
+            ChunkFile.setPixelState(new util.math.PixelPos((xPosition * 16) + x, y, (yPosition * 16) + z), state.getPixelID(), state.getState());
         }
     }
 }

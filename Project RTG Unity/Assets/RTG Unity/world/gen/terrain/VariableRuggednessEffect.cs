@@ -46,7 +46,7 @@
         override public float added(RTGWorld rtgWorld, float x, float y)
         {
 
-            float choice = (float)rtgWorld.simplex.octaves[octave].Evaluate((float)x / wavelength, (float)y / wavelength);
+            float choice = rtgWorld.simplex.octave(octave).noise2((float)x / wavelength, (float)y / wavelength);
             if (choice <= startTransition)
             {
                 return smoothTerrain.added(rtgWorld, x, y);

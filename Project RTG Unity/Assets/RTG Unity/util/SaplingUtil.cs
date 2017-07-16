@@ -1,71 +1,72 @@
 ﻿namespace rtg.util
 {
-    //import net.minecraft.block.BlockSapling;
-    using generic.block;
-    //import net.minecraft.block.state.IBlockState;
-    using generic.block.state;
-    //import net.minecraft.init.Blocks;
+    //import net.minecraft.pixel.PixelSapling;
+    using generic.pixel;
+    //import net.minecraft.pixel.state.IPixelState;
+    using generic.pixel.state;
+    //import net.minecraft.init.Pixels;
     using generic.init;
 
     using rtg.api.util;
     using UnityEngine;
     using System;
 
-public class SaplingUtil
-{
-
-    public static int getMetaFromState(IBlockState state)
+    public class SaplingUtil
     {
 
-        try
+        public static int getMetaFromState(IPixelState state)
         {
 
-            if (!(state.getBlock() == Blocks.SAPLING)) {
-                Debug.Log("Could not get sapling meta from non-sapling BlockState " + state.getBlock() + ".");
+            try
+            {
+
+                if (!(state.getPixel() == Pixels.SAPLING))
+                {
+                    Debug.Log("Could not get sapling meta from non-sapling PixelState " + state.getPixel() + ".");
+                    return 0;
+                }
+
+                return state.getState();
+            }
+            catch (Exception e)
+            {
+
+                Debug.LogWarning("Could not get sapling meta from state. Reason: " + e.Message);
                 return 0;
             }
-
-            return (int)state.getStateFromMeta();
         }
-        catch (Exception e)
+
+        public static IPixelState getSaplingFromLeaves(IPixelState leavesPixel)
         {
 
-            Debug.LogWarning("Could not get sapling meta from state. Reason: " + e.Message);
-            return 0;
+            if (leavesPixel == Pixels.LEAVES)
+            {
+                return (IPixelState)Pixels.SAPLING;
+            }
+            else if (leavesPixel == PixelUtil.getStateLeaf(1))
+            {
+                return PixelUtil.getStateSapling(1);
+            }
+            else if (leavesPixel == PixelUtil.getStateLeaf(2))
+            {
+                return PixelUtil.getStateSapling(2);
+            }
+            else if (leavesPixel == PixelUtil.getStateLeaf(3))
+            {
+                return PixelUtil.getStateSapling(3);
+            }
+            else if (leavesPixel == Pixels.LEAVES2)
+            {
+                return PixelUtil.getStateSapling(4);
+            }
+            else if (leavesPixel == PixelUtil.getStateLeaf2(1))
+            {
+                return PixelUtil.getStateSapling(5);
+            }
+            else
+            {
+                return (IPixelState)Pixels.SAPLING;
+            }
         }
     }
-
-    public static IBlockState getSaplingFromLeaves(IBlockState leavesBlock)
-    {
-
-        if (leavesBlock == Blocks.LEAVES.getDefaultState())
-        {
-            return (IBlockState)Blocks.SAPLING.getDefaultState();
-        }
-        else if (leavesBlock == BlockUtil.getStateLeaf(1))
-        {
-            return BlockUtil.getStateSapling(1);
-        }
-        else if (leavesBlock == BlockUtil.getStateLeaf(2))
-        {
-            return BlockUtil.getStateSapling(2);
-        }
-        else if (leavesBlock == BlockUtil.getStateLeaf(3))
-        {
-            return BlockUtil.getStateSapling(3);
-        }
-        else if (leavesBlock == Blocks.LEAVES2.getDefaultState())
-        {
-            return BlockUtil.getStateSapling(4);
-        }
-        else if (leavesBlock == BlockUtil.getStateLeaf2(1))
-        {
-            return BlockUtil.getStateSapling(5);
-        }
-        else
-        {
-            return (IBlockState)Blocks.SAPLING.getDefaultState();
-        }
-    }
-}
 }

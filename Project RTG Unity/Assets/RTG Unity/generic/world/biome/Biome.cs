@@ -6,6 +6,8 @@
         private float temperature;
         private float baseHeight = 0.1f;
         private float heightVariation = 0.3f;
+        public pixel.Pixel topPixel;
+        public pixel.Pixel fillerPixel;
         private Type[] tags;
 
         //Types taken from Forge API
@@ -33,6 +35,7 @@
             SKY,
             MUSHROOM,
             MAGICAL,
+            RARE,
 
             OCEAN,
             RIVER,
@@ -49,7 +52,8 @@
             SANDY,
             SNOWY,
             WASTELAND,
-            BEACH
+            BEACH,
+            VOID
         }
 
         public Biome() : this(0)
@@ -62,17 +66,6 @@
             this.ID = ID;
         }
 
-        public Biome(int ID, float temperature)
-        {
-            this.ID = ID;
-            this.temperature = temperature;
-        }
-        
-        public Biome(int ID, params Type[] tags)
-        {
-            this.ID = ID;
-            this.tags = tags;
-        }
 
         public Biome(int ID, float temperature, params Type[] tags)
         {
@@ -86,10 +79,137 @@
             return this;
         }
 
-        public Biome getBiome(int ID)
+        public static Biome getBiome(int ID)
         {
-            this.ID = ID;
-            return this;
+            switch (ID)
+            {
+                //Normal
+                case 0:
+                    return generic.init.Biomes.OCEAN;
+                case 1:
+                    return generic.init.Biomes.PLAINS;
+                case 2:
+                    return generic.init.Biomes.DESERT;
+                case 3:
+                    return generic.init.Biomes.EXTREME_HILLS;
+                case 4:
+                    return generic.init.Biomes.FOREST;
+                case 5:
+                    return generic.init.Biomes.TAIGA;
+                case 6:
+                    return generic.init.Biomes.SWAMPLAND;
+                case 7:
+                    return generic.init.Biomes.RIVER;
+                /*case 8:
+                    return generic.init.Biomes.HELL;
+                case 9:
+                    return generic.init.Biomes.SKY;*/
+                case 10:
+                    return generic.init.Biomes.FROZEN_OCEAN;
+                case 11:
+                    return generic.init.Biomes.FROZEN_RIVER;
+                case 12:
+                    return generic.init.Biomes.ICE_FLATS;
+                case 13:
+                    return generic.init.Biomes.ICE_MOUNTAINS;
+                case 14:
+                    return generic.init.Biomes.MUSHROOM_ISLAND;
+                case 15:
+                    return generic.init.Biomes.MUSHROOM_ISLAND_SHORE;
+                case 16:
+                    return generic.init.Biomes.BEACHES;
+                case 17:
+                    return generic.init.Biomes.DESERT_HILLS;
+                case 18:
+                    return generic.init.Biomes.FOREST_HILLS;
+                case 19:
+                    return generic.init.Biomes.TAIGA_HILLS;
+                case 20:
+                    return generic.init.Biomes.SMALLER_EXTREME_HILLS;
+                case 21:
+                    return generic.init.Biomes.JUNGLE;
+                case 22:
+                    return generic.init.Biomes.JUNGLE_HILLS;
+                case 23:
+                    return generic.init.Biomes.JUNGLE_EDGE;
+                case 24:
+                    return generic.init.Biomes.DEEP_OCEAN;
+                case 25:
+                    return generic.init.Biomes.STONE_BEACH;
+                case 26:
+                    return generic.init.Biomes.COLD_BEACH;
+                case 27:
+                    return generic.init.Biomes.BIRCH_FOREST;
+                case 28:
+                    return generic.init.Biomes.BIRCH_FOREST_HILLS;
+                case 29:
+                    return generic.init.Biomes.ROOFED_FOREST;
+                case 30:
+                    return generic.init.Biomes.TAIGA_COLD;
+                case 31:
+                    return generic.init.Biomes.TAIGA_COLD_HILLS;
+                case 32:
+                    return generic.init.Biomes.REDWOOD_TAIGA;
+                case 33:
+                    return generic.init.Biomes.REDWOOD_TAIGA_HILLS;
+                case 34:
+                    return generic.init.Biomes.EXTREME_HILLS_WITH_TREES;
+                case 35:
+                    return generic.init.Biomes.SAVANNA;
+                case 36:
+                    return generic.init.Biomes.SAVANNA_ROCK;
+                case 37:
+                    return generic.init.Biomes.MESA;
+                case 38:
+                    return generic.init.Biomes.MESA_ROCK;
+                case 39:
+                    return generic.init.Biomes.MESA_CLEAR_ROCK;
+                //Mutated
+                case 129:
+                    return generic.init.Biomes.MUTATED_PLAINS;
+                case 130:
+                    return generic.init.Biomes.MUTATED_DESERT;
+                case 131:
+                    return generic.init.Biomes.MUTATED_EXTREME_HILLS;
+                case 132:
+                    return generic.init.Biomes.MUTATED_FOREST;
+                case 133:
+                    return generic.init.Biomes.MUTATED_TAIGA;
+                case 134:
+                    return generic.init.Biomes.MUTATED_SWAMPLAND;
+                case 140:
+                    return generic.init.Biomes.MUTATED_ICE_FLATS;
+                case 149:
+                    return generic.init.Biomes.MUTATED_JUNGLE;
+                case 151:
+                    return generic.init.Biomes.JUNGLE_EDGE;
+                case 155:
+                    return generic.init.Biomes.MUTATED_BIRCH_FOREST;
+                case 156:
+                    return generic.init.Biomes.MUTATED_BIRCH_FOREST_HILLS;
+                case 157:
+                    return generic.init.Biomes.MUTATED_ROOFED_FOREST;
+                case 158:
+                    return generic.init.Biomes.MUTATED_TAIGA_COLD;
+                case 160:
+                    return generic.init.Biomes.MUTATED_REDWOOD_TAIGA;
+                case 161:
+                    return generic.init.Biomes.MUTATED_REDWOOD_TAIGA_HILLS;
+                case 162:
+                    return generic.init.Biomes.MUTATED_EXTREME_HILLS_WITH_TREES;
+                case 163:
+                    return generic.init.Biomes.MUTATED_SAVANNA;
+                case 164:
+                    return generic.init.Biomes.MUTATED_SAVANNA_ROCK;
+                case 165:
+                    return generic.init.Biomes.MUTATED_MESA;
+                case 166:
+                    return generic.init.Biomes.MUTATED_MESA_ROCK;
+                case 167:
+                    return generic.init.Biomes.MUTATED_MESA_CLEAR_ROCK;
+                default:
+                    return generic.init.Biomes.VOID;
+            }
         }
 
         public int getBiomeID()
@@ -132,6 +252,12 @@
                 }
             }
             return returnVal;
+        }
+
+        public void presetPixels(pixel.Pixel topPixel, pixel.Pixel fillerPixel)
+        {
+            this.topPixel = topPixel;
+            this.fillerPixel = fillerPixel;
         }
     }
 }

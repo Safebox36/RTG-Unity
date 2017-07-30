@@ -3,8 +3,8 @@
     using System;
 
     //import net.minecraft.pixel.material.Material;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -22,12 +22,12 @@
     {
 
         private int varSize;
-        private IPixelState logPixel;
-        private IPixelState leavePixel;
+        private Pixel logPixel;
+        private Pixel leavePixel;
         private bool varSand;
         private RTGConfig rtgConfig = RTGAPI.config();
 
-        public WorldGenShrubRTG(int size, IPixelState log, IPixelState leav, bool sand)
+        public WorldGenShrubRTG(int size, Pixel log, Pixel leav, bool sand)
         {
 
             varSize = size;
@@ -72,8 +72,8 @@
         public void buildLeaves(World world, int x, int y, int z, int size)
         {
 
-            IPixelState b = world.getPixelState(new PixelPos(x, y - 2, z));
-            IPixelState b1 = world.getPixelState(new PixelPos(x, y - 1, z));
+            Pixel b = world.getPixelState(new PixelPos(x, y - 2, z));
+            Pixel b1 = world.getPixelState(new PixelPos(x, y - 1, z));
 
             if ((b == Pixels.SAND || b1 == Pixels.SAND) && !rtgConfig.ALLOW_TREES_TO_GENERATE_ON_SAND)
             {
@@ -114,10 +114,10 @@
             }
         }
 
-        public void buildPixel(World world, int x, int y, int z, IPixelState pixel)
+        public void buildPixel(World world, int x, int y, int z, Pixel pixel)
         {
 
-            IPixelState b = world.getPixelState(new PixelPos(x, y, z));
+            Pixel b = world.getPixelState(new PixelPos(x, y, z));
 
             // We don't want shrubs generating in the middle of sugarcane, so let's add a special check for that here.
             if (b.getPixel() == Pixels.REEDS)

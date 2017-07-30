@@ -4,17 +4,12 @@
 
     public class WorldGenerator
     {
-        public WorldGenerator() : this(false)
-        {
-
-        }
-        
-        public WorldGenerator(bool ignore)  //don't know what this is for, thus far it's always set to false
+        public WorldGenerator()
         {
 
         }
 
-        public virtual bool generate(World world, System.Random rand, generic.util.math.PixelPos pos)
+        public virtual bool generate(World world, Random rand, generic.util.math.PixelPos pos)
         {
             return false;
         }

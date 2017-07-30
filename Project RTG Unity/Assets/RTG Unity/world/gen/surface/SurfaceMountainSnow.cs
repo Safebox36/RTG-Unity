@@ -4,13 +4,12 @@
 
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api.util.noise;
@@ -31,13 +30,13 @@
         private float iStrength = 50f;
         private float cCliff = 1.5f;
 
-        public SurfaceMountainSnow(BiomeConfig config, IPixelState top, IPixelState fill, float minCliff) : base(config, top, fill)
+        public SurfaceMountainSnow(BiomeConfig config, Pixel top, Pixel fill, float minCliff) : base(config, top, fill)
         {
 
             min = minCliff;
         }
 
-        public SurfaceMountainSnow(BiomeConfig config, IPixelState top, IPixelState fill, float minCliff, float stoneCliff, float stoneHeight, float stoneStrength, float snowCliff, float snowHeight, float snowStrength, float clayCliff) : this(config, top, fill, minCliff)
+        public SurfaceMountainSnow(BiomeConfig config, Pixel top, Pixel fill, float minCliff, float stoneCliff, float stoneHeight, float stoneStrength, float snowCliff, float snowHeight, float snowStrength, float clayCliff) : this(config, top, fill, minCliff)
         {
 
             sCliff = stoneCliff;
@@ -49,7 +48,7 @@
             cCliff = clayCliff;
         }
 
-        override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+        override public void paintTerrain(Chunk primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
         {
 
             Random rand = rtgWorld.rand;

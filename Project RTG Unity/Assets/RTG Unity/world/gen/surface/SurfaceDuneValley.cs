@@ -4,13 +4,13 @@
 
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api.util.noise;
@@ -25,7 +25,7 @@
         private bool dirt;
         private bool mix;
 
-        public SurfaceDuneValley(BiomeConfig config, IPixelState top, IPixelState fill, float valleySize, bool d, bool m) : base(config, top, fill)
+        public SurfaceDuneValley(BiomeConfig config, Pixel top, Pixel fill, float valleySize, bool d, bool m) : base(config, top, fill)
         {
 
             valley = valleySize;
@@ -33,7 +33,7 @@
             mix = m;
         }
 
-        override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+        override public void paintTerrain(Chunk primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
         {
 
             Random rand = rtgWorld.rand;

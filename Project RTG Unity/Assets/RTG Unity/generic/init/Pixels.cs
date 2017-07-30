@@ -76,6 +76,8 @@
 
         public static pixel.Pixel VINE = new pixel.Pixel(106);
 
+        public static pixel.Pixel MYCELIUM = new pixel.Pixel(110);
+
         public static pixel.Pixel COCOA = new pixel.Pixel(127);
 
         public static pixel.Pixel EMERALD_ORE = new pixel.Pixel(129);
@@ -90,6 +92,7 @@
 
         public static pixel.Pixel HARDENED_CLAY = new pixel.Pixel(172);
         public static pixel.Pixel COAL_PIXEL = new pixel.Pixel(173);
+        public static pixel.Pixel PACKED_ICE = new pixel.Pixel(174);
 
         public static pixel.Pixel DOUBLE_PLANT = new pixel.Pixel(175);
 

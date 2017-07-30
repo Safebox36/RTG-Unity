@@ -2,8 +2,8 @@
 {
     using System;
 
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -16,17 +16,17 @@
     public class WorldGenGrass : WorldGenerator
     {
 
-        private IPixelState _pixel;
+        private Pixel _pixel;
         private int _metadata;
 
-        public WorldGenGrass(IPixelState b, int m)
+        public WorldGenGrass(Pixel b, int m)
         {
 
-            _pixel = (IPixelState)b.getPixel();
+            _pixel = b.getPixel();
             _metadata = m;
         }
 
-        virtual internal IPixelState pixel()
+        virtual internal Pixel pixel()
         {
 
             return _pixel;
@@ -107,7 +107,7 @@
         public class SingleType : WorldGenGrass
         {
 
-            public SingleType(IPixelState b, int m) : base(b, m)
+            public SingleType(Pixel b, int m) : base(b, m)
             {
 
             }
@@ -116,17 +116,17 @@
         public class RandomType : WorldGenGrass
         {
 
-            private readonly IPixelState[] pixels;
+            private readonly Pixel[] pixels;
             private readonly byte[] metas;
             private int index;// if it gets called without being set there's a bug in passing
 
-            public RandomType(IPixelState[] b, byte[] m) : base(b[0], (int)m[0])// temporary fake cal
+            public RandomType(Pixel[] b, byte[] m) : base(b[0], (int)m[0])// temporary fake cal
             {
                 pixels = b;
                 metas = m;
             }
 
-            override internal IPixelState pixel()
+            override internal Pixel pixel()
             {
 
                 return pixels[index];

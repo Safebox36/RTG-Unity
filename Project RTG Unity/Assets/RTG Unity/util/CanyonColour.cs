@@ -4,8 +4,8 @@
 
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
 
     using rtg.api;
     using rtg.api.config;
@@ -23,11 +23,11 @@
         public static readonly CanyonColour MESA_BRYCE = new CanyonColour(RTGConfig.getPlateauGradientPixelMetasFromConfigString(RTGAPI.config().MESA_BRYCE_GRADIENT_STRING));
         public static readonly CanyonColour SAVANNA = new CanyonColour(RTGConfig.getPlateauGradientPixelMetasFromConfigString(RTGAPI.config().SAVANNA_GRADIENT_STRING));
 
-        private static Dictionary<CanyonColour, IPixelState[]> colourPixels = new Dictionary<CanyonColour, IPixelState[]>();
+        private static Dictionary<CanyonColour, Pixel[]> colourPixels = new Dictionary<CanyonColour, Pixel[]>();
         private static OpenSimplexNoise simplex;
         private byte[] bytes;
 
-        private static IPixelState plateauPixel = (IPixelState)new Pixel(RTGAPI.config().PLATEAU_PIXEL_ID).withProperty(RTGAPI.config().PLATEAU_PIXEL_META);
+        private static Pixel plateauPixel = new Pixel(RTGAPI.config().PLATEAU_PIXEL_ID).withProperty(RTGAPI.config().PLATEAU_PIXEL_META);
         private static Pixel plateauGradientPixel = new Pixel(RTGAPI.config().PLATEAU_GRADIENT_PIXEL_ID);
 
         CanyonColour(byte[] bytes)
@@ -43,27 +43,27 @@
             foreach (CanyonColour colour in colourPixels.Keys)
             {
 
-                IPixelState[] c = new IPixelState[256];
+                Pixel[] c = new Pixel[256];
                 int j;
 
                 for (int i = 0; i < 256; i++)
                 {
 
                     byte b = colour.bytes[i % colour.bytes.Length];
-                    c[i] = (b == -1) ? plateauPixel : (IPixelState)plateauGradientPixel.withProperty(b);
+                    c[i] = (b == -1) ? plateauPixel : plateauGradientPixel.withProperty(b);
                 }
 
                 colourPixels[colour] = c;
             }
         }
 
-        public IPixelState getPixelForHeight(int x, int y, int z)
+        public Pixel getPixelForHeight(int x, int y, int z)
         {
 
             return getPixelForHeight(x, (float)y, z);
         }
 
-        public IPixelState getPixelForHeight(int x, float y, int z)
+        public Pixel getPixelForHeight(int x, float y, int z)
         {
 
             y = (y < 0) ? 0 : (y > 255) ? 255 : y;

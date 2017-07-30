@@ -3,8 +3,8 @@
 using System;
 
     //import net.minecraft.block.material.Material;
-    //import net.minecraft.block.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.block.state.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -25,12 +25,12 @@ public class WorldGenBlob : WorldGenerator
 
     protected bool water;
 protected BoulderUtil boulderUtil;
-private IPixelState blobPixel;
+private Pixel blobPixel;
 private int blobSize;
 private bool booShouldGenerate;
 private RTGConfig rtgConfig = RTGAPI.config();
 
-public WorldGenBlob(IPixelState b, int s, Random rand) : base(false)
+public WorldGenBlob(Pixel b, int s, Random rand) : base()
 {
             
     this.blobPixel = b;
@@ -55,7 +55,7 @@ public WorldGenBlob(IPixelState b, int s, Random rand) : base(false)
     }
 }
 
-public WorldGenBlob(IPixelState b, int s, Random rand, bool water) : this(b, s, rand)
+public WorldGenBlob(Pixel b, int s, Random rand, bool water) : this(b, s, rand)
         {
             
     this.water = water;
@@ -111,7 +111,7 @@ override public bool generate(World world, Random rand, PixelPos pos)
     int y = pos.getY();
     int z = pos.getZ();
 
-    IPixelState boulderPixel = this.boulderUtil.getBoulderPixel(this.blobPixel, x, y, z);
+    Pixel boulderPixel = this.boulderUtil.getBoulderPixel(this.blobPixel, x, y, z);
 
     while (true)
     {
@@ -121,7 +121,7 @@ override public bool generate(World world, Random rand, PixelPos pos)
             {
                 if (!world.isAirPixel(new PixelPos(x, y - 1, z)))
                 {
-                    IPixelState block = world.getPixelState(new PixelPos(x, y - 1, z));
+                    Pixel block = world.getPixelState(new PixelPos(x, y - 1, z));
 
                     // Water check.
                     if (!this.water)

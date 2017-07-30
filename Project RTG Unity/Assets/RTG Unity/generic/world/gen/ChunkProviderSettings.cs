@@ -68,10 +68,6 @@
         public readonly int goldCount;
         public readonly int goldMinHeight;
         public readonly int goldMaxHeight;
-        public readonly int redstoneSize;
-        public readonly int redstoneCount;
-        public readonly int redstoneMinHeight;
-        public readonly int redstoneMaxHeight;
         public readonly int diamondSize;
         public readonly int diamondCount;
         public readonly int diamondMinHeight;

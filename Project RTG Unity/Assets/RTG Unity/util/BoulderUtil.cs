@@ -1,7 +1,7 @@
 ﻿namespace rtg.util
 {
-    //import net.minecraft.block.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.block.state.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
 
@@ -13,7 +13,7 @@
 
         private RTGConfig rtgConfig = RTGAPI.config();
 
-        public IPixelState getBoulderPixel(IPixelState defaultPixel, int worldX, int worldY, int worldZ)
+        public Pixel getBoulderPixel(Pixel defaultPixel, int worldX, int worldY, int worldZ)
         {
             return defaultPixel;
         }

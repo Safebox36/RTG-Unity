@@ -2,8 +2,8 @@
 {
 using System;
 
-    //import net.minecraft.block.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.block.state.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -36,7 +36,7 @@ override public bool generate(World world, Random rand, PixelPos pos)
     int x = pos.getX();
     int y = pos.getY();
     int z = pos.getZ();
-    IPixelState b;
+    Pixel b;
     for (int l = 0; l < 10; ++l)
     {
         int i1 = x + rand.Next(8) - rand.Next(8);

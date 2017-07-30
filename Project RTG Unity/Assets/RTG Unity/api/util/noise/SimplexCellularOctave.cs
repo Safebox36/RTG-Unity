@@ -52,6 +52,8 @@
                 perm2D[i] = (short)((perm[i] % 12) * 2);
                 source[r] = source[i];
             }
+
+            temp();
         }
 
         /*

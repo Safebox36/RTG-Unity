@@ -4,13 +4,13 @@
 
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api.util.noise;
@@ -21,12 +21,12 @@
     public class SurfaceDesertOasis : SurfaceBase
     {
 
-        private IPixelState cliffPixel1;
-        private IPixelState cliffPixel2;
+        private Pixel cliffPixel1;
+        private Pixel cliffPixel2;
         private byte sandMetadata;
         private int cliffType;
 
-        public SurfaceDesertOasis(BiomeConfig config, IPixelState top, IPixelState filler, IPixelState cliff1, IPixelState cliff2, byte metadata, int cliff) : base(config, top, filler)
+        public SurfaceDesertOasis(BiomeConfig config, Pixel top, Pixel filler, Pixel cliff1, Pixel cliff2, byte metadata, int cliff) : base(config, top, filler)
         {
 
             cliffPixel1 = cliff1;
@@ -35,7 +35,7 @@
             cliffType = cliff;
         }
 
-        override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+        override public void paintTerrain(Chunk primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
         {
 
             Random rand = rtgWorld.rand;

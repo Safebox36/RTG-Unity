@@ -3,8 +3,8 @@
     using System;
 
     //import net.minecraft.block.material.Material;
-    //import net.minecraft.block.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.block.state.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -31,7 +31,7 @@
             int x = pos.getX();
             int y = pos.getY();
             int z = pos.getZ();
-            IPixelState b;
+            Pixel b;
             while (y > 0)
             {
                 b = world.getPixelState(new PixelPos(x, y, z));

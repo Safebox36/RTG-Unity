@@ -5,8 +5,8 @@
     //import net.minecraft.pixel.PixelDoublePlant;
     using generic.pixel;
     //import net.minecraft.pixel.material.Material;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
     //import net.minecraft.world.World;
@@ -29,7 +29,7 @@
         /**
          * Checks a given coordinate to see if it is surrounded by a given pixel, usually air.
          */
-        public bool isSurroundedByPixel(IPixelState checkPixel, int checkDistance, SurroundCheckType checkType, Random rand, int x, int y, int z)
+        public bool isSurroundedByPixel(Pixel checkPixel, int checkDistance, SurroundCheckType checkType, Random rand, int x, int y, int z)
         {
 
             switch (checkType)
@@ -107,7 +107,7 @@
 
                 case SurroundCheckType.UP: // Checks above coord.
 
-                    IPixelState b;
+                    Pixel b;
                     for (int i = checkDistance; i > 0; i--)
                     {
 
@@ -132,11 +132,11 @@
          * Checks to see if a given pixel is above a given coordinate.
          * Use isSurroundedByPixel() with SurroundCheckType.UP if you want to check all pixels above.
          */
-        public bool isPixelAbove(IPixelState checkPixel, int checkDistance, World world, int x, int y, int z, bool materialCheck)
+        public bool isPixelAbove(Pixel checkPixel, int checkDistance, World world, int x, int y, int z, bool materialCheck)
         {
 
             //Material checkPixelMaterial = checkPixel.getMaterial();
-            IPixelState pixelAbove;
+            Pixel pixelAbove;
             //Material m;
 
             for (int i = 1; i <= checkDistance; i++)
@@ -161,13 +161,13 @@
             return true;
         }
 
-        public void setDoublePlant(PixelPos lowerPos, IPixelState doublePlant, int flag)
+        public void setDoublePlant(PixelPos lowerPos, Pixel doublePlant, int flag)
         {
             this.world.setPixelState(lowerPos, doublePlant.withProperty(0));
             this.world.setPixelState(lowerPos.up(), doublePlant.withProperty(1)); //PixelDoublePlant.HALF  || PixelDoublePlant.UPPER));
         }
 
-        public void setDoublePlant(PixelPos lowerPos, IPixelState doublePlant)
+        public void setDoublePlant(PixelPos lowerPos, Pixel doublePlant)
         {
             this.setDoublePlant(lowerPos, doublePlant, 2);
         }

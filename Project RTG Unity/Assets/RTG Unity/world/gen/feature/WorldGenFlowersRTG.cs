@@ -2,8 +2,8 @@
 {
 using System;
 
-    //import net.minecraft.block.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.block.state.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -62,7 +62,7 @@ override public bool generate(World world, Random rand, PixelPos pos)
             int j1 = y;// + rand.nextInt(4) - rand.nextInt(4);
             int k1 = z;// + rand.nextInt(8) - rand.nextInt(8);
 
-            IPixelState doublePlant = PixelUtil.getStateFlower(randomFlower);
+            Pixel doublePlant = PixelUtil.getStateFlower(randomFlower);
             PixelPos doublePlantPos = new PixelPos(i1, j1, k1);
             WorldUtil worldUtil = new WorldUtil(world);
 
@@ -82,7 +82,7 @@ override public bool generate(World world, Random rand, PixelPos pos)
             int j1 = y;// + rand.nextInt(4) - rand.nextInt(4);
             int k1 = z;// + rand.nextInt(8) - rand.nextInt(8);
 
-            IPixelState flower = PixelUtil.getStateFlower(randomFlower);
+            Pixel flower = PixelUtil.getStateFlower(randomFlower);
             PixelPos flowerPos = new PixelPos(i1, j1, k1);
 
             if (world.isAirPixel(flowerPos)
@@ -101,7 +101,7 @@ override public bool generate(World world, Random rand, PixelPos pos)
             int j1 = y;// + rand.nextInt(4) - rand.nextInt(4);
             int k1 = z;// + rand.nextInt(8) - rand.nextInt(8);
 
-            IPixelState flower = PixelUtil.getStateFlower(randomFlower);
+            Pixel flower = PixelUtil.getStateFlower(randomFlower);
             PixelPos flowerPos = new PixelPos(i1, j1, k1);
 
             if (world.isAirPixel(flowerPos)

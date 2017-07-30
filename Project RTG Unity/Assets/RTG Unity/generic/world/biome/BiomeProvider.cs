@@ -3,14 +3,18 @@
     using System;
     using System.Collections.Generic;
     using generic.util.math;
+    using UnityEngine;
+
     public class BiomeProvider
     {
-        public BiomeProvider() : this(new World(16,16))
+        Texture2D biomeMap;
+
+        public BiomeProvider() : this(new Texture2D(16,16))
         {
 
         }
 
-        public BiomeProvider(World world)
+        public BiomeProvider(Texture2D biomeMap)
         {
 
         }
@@ -55,7 +59,7 @@
             return false;
         }
 
-        virtual public PixelPos findBiomePosition(int x, int z, int range, List<Biome> biomes, Random random)
+        virtual public PixelPos findBiomePosition(int x, int z, int range, List<Biome> biomes, System.Random random)
         {
             return null;
         }

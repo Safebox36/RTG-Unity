@@ -4,13 +4,13 @@
 
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api;
@@ -26,18 +26,18 @@
         private static readonly float ventRadius = 7f;
         private static readonly int lavaHeight = 138 + 3 + (RTGAPI.config().ENABLE_VOLCANO_ERUPTIONS ? 5 : 0);    // + 3 to account for lava cone tip
         private static readonly int baseVolcanoHeight = 142 + 8;
-        private static IPixelState volcanoPixel = getVolcanoPixel(RTGAPI.config().VOLCANO_PIXEL_ID, RTGAPI.config().VOLCANO_PIXEL_META, new IPixelState(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_PIXEL));
-        private static IPixelState volcanoPatchPixel = getVolcanoPixel(RTGAPI.config().VOLCANO_MIX1_PIXEL_ID, RTGAPI.config().VOLCANO_MIX1_PIXEL_META, new IPixelState(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_MIX1_PIXEL));
-        private static IPixelState volcanoPatchPixel2 = getVolcanoPixel(RTGAPI.config().VOLCANO_MIX2_PIXEL_ID, RTGAPI.config().VOLCANO_MIX2_PIXEL_META, new IPixelState(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_MIX2_PIXEL));
-        private static IPixelState volcanoPatchPixel3 = getVolcanoPixel(RTGAPI.config().VOLCANO_MIX3_PIXEL_ID, RTGAPI.config().VOLCANO_MIX3_PIXEL_META, new IPixelState(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_MIX3_PIXEL));
-        private static IPixelState lavaPixel = RTGAPI.config().ENABLE_VOLCANO_ERUPTIONS ? (IPixelState)Pixels.FLOWING_LAVA : (IPixelState)Pixels.LAVA;
+        private static Pixel volcanoPixel = getVolcanoPixel(RTGAPI.config().VOLCANO_PIXEL_ID, RTGAPI.config().VOLCANO_PIXEL_META, new Pixel(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_PIXEL));
+        private static Pixel volcanoPatchPixel = getVolcanoPixel(RTGAPI.config().VOLCANO_MIX1_PIXEL_ID, RTGAPI.config().VOLCANO_MIX1_PIXEL_META, new Pixel(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_MIX1_PIXEL));
+        private static Pixel volcanoPatchPixel2 = getVolcanoPixel(RTGAPI.config().VOLCANO_MIX2_PIXEL_ID, RTGAPI.config().VOLCANO_MIX2_PIXEL_META, new Pixel(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_MIX2_PIXEL));
+        private static Pixel volcanoPatchPixel3 = getVolcanoPixel(RTGAPI.config().VOLCANO_MIX3_PIXEL_ID, RTGAPI.config().VOLCANO_MIX3_PIXEL_META, new Pixel(rtg.api.config.RTGConfig.DEFAULT_VOLCANO_MIX3_PIXEL));
+        private static Pixel lavaPixel = RTGAPI.config().ENABLE_VOLCANO_ERUPTIONS ? Pixels.FLOWING_LAVA : Pixels.LAVA;
 
-        public static void build(ChunkPrimer primer, World world, Random mapRand, int baseX, int baseY, int chunkX, int chunkY, OpenSimplexNoise simplex, CellNoise cell, float[] noise)
+        public static void build(Chunk primer, World world, Random mapRand, int baseX, int baseY, int chunkX, int chunkY, OpenSimplexNoise simplex, CellNoise cell, float[] noise)
         {
 
             int i, j;
             float distanceEll, height, terrainHeight, obsidian;
-            IPixelState b;
+            Pixel b;
 
             for (int x = 0; x < 16; x++)
             {
@@ -119,7 +119,7 @@
                         {
                             if (y <= terrainHeight)
                             {
-                                b = (IPixelState)primer.getPixelState(x, y, z);
+                                b = primer.getPixelState(x, y, z);
 
                                 if (b == Pixels.AIR || b == Pixels.WATER)
                                 {
@@ -197,7 +197,7 @@
                                                 else
                                                 {
 
-                                                    b = (IPixelState)Pixels.STONE; // Stone so that surfacing will run (so this usually becomes grass)
+                                                    b = Pixels.STONE; // Stone so that surfacing will run (so this usually becomes grass)
                                                 }
                                             }
                                             else
@@ -207,12 +207,12 @@
                                         }
                                         else
                                         {
-                                            b = (IPixelState)Pixels.STONE; // Stone so that surfacing will run (so this usually becomes grass)
+                                            b = Pixels.STONE; // Stone so that surfacing will run (so this usually becomes grass)
                                         }
                                     }
                                     else
                                     {
-                                        b = (IPixelState)Pixels.STONE;
+                                        b = Pixels.STONE;
                                     }
                                 }
                                 else
@@ -228,7 +228,7 @@
             }
         }
 
-        private static bool isOnSurface(ChunkPrimer primer, int x, int y, int z)
+        private static bool isOnSurface(Chunk primer, int x, int y, int z)
         {
 
             return primer.getPixelState(x, y + 1, z) == Pixels.AIR;
@@ -240,15 +240,15 @@
             return (x * 16 + z) * 256 + y;
         }
 
-        private static IPixelState getVolcanoPixel(int pixelID, int pixelMeta, IPixelState defaultPixel)
+        private static Pixel getVolcanoPixel(int pixelID, int pixelMeta, Pixel defaultPixel)
         {
 
-            IPixelState volcanoPixel;
+            Pixel volcanoPixel;
 
             try
             {
 
-                volcanoPixel = (IPixelState)new Pixel(pixelID).withProperty(pixelMeta);
+                volcanoPixel = new Pixel(pixelID).withProperty(pixelMeta);
             }
             catch (Exception e)
             {

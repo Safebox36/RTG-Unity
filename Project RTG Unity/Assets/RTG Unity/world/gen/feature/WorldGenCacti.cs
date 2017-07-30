@@ -2,8 +2,8 @@
 {
     using System;
 
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -18,19 +18,19 @@
 
         private bool sand;
         private int eHeight;
-        private IPixelState soilPixel;
+        private Pixel soilPixel;
 
         public WorldGenCacti(bool sandOnly) : this(sandOnly, 0)
         {
 
         }
 
-        public WorldGenCacti(bool sandOnly, int extraHeight) : this(sandOnly, extraHeight, (IPixelState)Pixels.SAND)
+        public WorldGenCacti(bool sandOnly, int extraHeight) : this(sandOnly, extraHeight, Pixels.SAND)
         {
 
         }
 
-        public WorldGenCacti(bool sandOnly, int extraHeight, IPixelState soilPixel)
+        public WorldGenCacti(bool sandOnly, int extraHeight, Pixel soilPixel)
         {
             sand = sandOnly;
             eHeight = extraHeight;
@@ -43,7 +43,7 @@
             int x = pos.getX();
             int y = pos.getY();
             int z = pos.getZ();
-            IPixelState b;
+            Pixel b;
             //for (int l = 0; l < 10; ++l)
             {
                 int i1 = x;// + rand.nextInt(8) - rand.nextInt(8);
@@ -75,13 +75,13 @@
             return true;
         }
 
-        public IPixelState getSoilPixel()
+        public Pixel getSoilPixel()
         {
 
             return soilPixel;
         }
 
-        public WorldGenCacti setSoilPixel(IPixelState soilPixel)
+        public WorldGenCacti setSoilPixel(Pixel soilPixel)
         {
 
             this.soilPixel = soilPixel;

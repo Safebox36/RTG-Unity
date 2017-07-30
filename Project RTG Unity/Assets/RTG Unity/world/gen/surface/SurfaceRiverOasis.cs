@@ -8,7 +8,7 @@
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api;
@@ -31,7 +31,7 @@
             this.cutOffAmplitude = RTGAPI.config().RIVER_CUT_OFF_AMPLITUDE;
         }
 
-        override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+        override public void paintTerrain(Chunk primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
         {
 
             Random rand = rtgWorld.rand;

@@ -4,13 +4,13 @@
 
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api.util.noise;
@@ -21,16 +21,16 @@
     public class SurfaceGrasslandMixBig : SurfaceBase
     {
 
-        private IPixelState mixPixelTop;
-        private IPixelState mixPixelFill;
-        private IPixelState cliffPixel1;
-        private IPixelState cliffPixel2;
+        private Pixel mixPixelTop;
+        private Pixel mixPixelFill;
+        private Pixel cliffPixel1;
+        private Pixel cliffPixel2;
         private float width;
         private float height;
         private float smallW;
         private float smallS;
 
-        public SurfaceGrasslandMixBig(BiomeConfig config, IPixelState top, IPixelState filler, IPixelState mixTop, IPixelState mixFill, IPixelState cliff1, IPixelState cliff2, float mixWidth, float mixHeight, float smallWidth, float smallStrength) : base(config, top, filler)
+        public SurfaceGrasslandMixBig(BiomeConfig config, Pixel top, Pixel filler, Pixel mixTop, Pixel mixFill, Pixel cliff1, Pixel cliff2, float mixWidth, float mixHeight, float smallWidth, float smallStrength) : base(config, top, filler)
         {
             mixPixelTop = mixTop;
             mixPixelFill = mixFill;
@@ -43,7 +43,7 @@
             smallS = smallStrength;
         }
 
-        override public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+        override public void paintTerrain(Chunk primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
         {
 
             Random rand = rtgWorld.rand;

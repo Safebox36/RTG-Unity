@@ -1,15 +1,7 @@
 ﻿namespace generic.world.gen.layer
 {
-    public class GenLayer
+    public abstract class GenLayer
     {
-        public GenLayer()
-        {
-
-        }
-
-        public GenLayer[] initializeAllBiomeGenerators(long seed)
-        {
-            return null;
-        }
+        public abstract int[] getInts(int x, int y, int width, int height);
     }
 }

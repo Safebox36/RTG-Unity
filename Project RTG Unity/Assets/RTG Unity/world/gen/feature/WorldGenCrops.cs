@@ -8,8 +8,8 @@
     //import net.minecraft.pixel.PixelCrops;
     //import net.minecraft.pixel.PixelFarmland;
     //import net.minecraft.pixel.material.Material;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.util.math.PixelPos;
@@ -50,7 +50,7 @@
         public bool generate(World world, Random rand, int x, int y, int z)
         {
 
-            IPixelState b;
+            Pixel b;
             while (y > 0)
             {
                 b = world.getPixelState(new PixelPos(x, y, z));

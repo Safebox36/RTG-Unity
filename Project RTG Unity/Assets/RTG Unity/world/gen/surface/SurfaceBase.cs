@@ -2,13 +2,13 @@
 {
     //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
     //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
+    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api;
@@ -21,27 +21,22 @@ using rtg.api.world;
 public abstract class SurfaceBase
 {
 
-    protected IPixelState topPixel;
-    protected IPixelState fillerPixel;
-    protected IPixelState cliffStonePixel;
-    protected IPixelState cliffCobblePixel;
+    protected Pixel topPixel;
+    protected Pixel fillerPixel;
+    protected Pixel cliffStonePixel;
+    protected Pixel cliffCobblePixel;
     protected RTGConfig rtgConfig = RTGAPI.config();
     protected BiomeConfig biomeConfig;
 
-    public IPixelState shadowStonePixel;
-    public IPixelState shadowDesertPixel;
+    public Pixel shadowStonePixel;
+    public Pixel shadowDesertPixel;
 
     public SurfaceBase(BiomeConfig config, Pixel top, byte topByte, Pixel fill, byte fillByte) : this(config, top, fill)
         {
             
     }
 
-    public SurfaceBase(BiomeConfig config, Pixel top, Pixel fill) : this(config, (IPixelState)top, (IPixelState)fill)
-        {
-            
-    }
-
-    public SurfaceBase(BiomeConfig config, IPixelState top, IPixelState fill)
+    public SurfaceBase(BiomeConfig config, Pixel top, Pixel fill)
     {
 
         if (config == null)
@@ -57,55 +52,55 @@ public abstract class SurfaceBase
         this.assignUserConfigs(config, top, fill);
     }
 
-    virtual public void paintTerrain(ChunkPrimer primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
+    virtual public void paintTerrain(Chunk primer, int i, int j, int x, int z, int depth, RTGWorld rtgWorld, float[] noise, float river, Biome[] _base)
     {
 
     }
 
-    protected IPixelState getShadowStonePixel(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
+    protected Pixel getShadowStonePixel(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
     {
             return this.shadowStonePixel;
     }
 
-    protected IPixelState getShadowDesertPixel(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
+    protected Pixel getShadowDesertPixel(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
     {
                         return this.shadowDesertPixel;
     }
 
-    protected IPixelState hcStone(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
+    protected Pixel hcStone(RTGWorld rtgWorld, int i, int j, int x, int y, int k)
     {
 
         return cliffStonePixel;
     }
 
-    protected IPixelState hcCobble(RTGWorld rtgWorld, int worldX, int worldZ, int chunkX, int chunkZ, int worldY)
+    protected Pixel hcCobble(RTGWorld rtgWorld, int worldX, int worldZ, int chunkX, int chunkZ, int worldY)
     {
             return cliffCobblePixel;
     }
 
-    public IPixelState getTopPixel()
+    public Pixel getTopPixel()
     {
 
         return this.topPixel;
     }
 
-    public IPixelState getFillerPixel()
+    public Pixel getFillerPixel()
     {
 
         return this.fillerPixel;
     }
 
-    private void assignUserConfigs(BiomeConfig config, IPixelState top, IPixelState fill)
+    private void assignUserConfigs(BiomeConfig config, Pixel top, Pixel fill)
     {
 
         topPixel = getConfigPixel(config.SURFACE_TOP_PIXEL, config.SURFACE_TOP_PIXEL_META, top);
         fillerPixel = getConfigPixel(config.SURFACE_FILLER_PIXEL, config.SURFACE_FILLER_PIXEL_META, fill);
     }
 
-    protected IPixelState getConfigPixel(int userPixelId, int userPixelMeta, IPixelState pixelDefault)
+    protected Pixel getConfigPixel(int userPixelId, int userPixelMeta, Pixel pixelDefault)
     {
 
-        IPixelState pixelReturn;
+        Pixel pixelReturn;
 
         try
         {
@@ -116,11 +111,11 @@ public abstract class SurfaceBase
             {
                 if (userPixelMeta == 0)
                 {
-                    pixelReturn = (IPixelState)pixelConfig;
+                    pixelReturn = pixelConfig;
                 }
                 else
                 {
-                    pixelReturn = (IPixelState)pixelConfig.withProperty(userPixelMeta);
+                    pixelReturn = pixelConfig.withProperty(userPixelMeta);
                 }
             }
             else
@@ -142,13 +137,13 @@ public abstract class SurfaceBase
         cliffStonePixel = getConfigPixel(
             biomeConfig.SURFACE_CLIFF_STONE_PIXEL,
             biomeConfig.SURFACE_CLIFF_STONE_PIXEL_META,
-            (IPixelState)Pixels.STONE
+            Pixels.STONE
         );
 
         cliffCobblePixel = getConfigPixel(
             biomeConfig.SURFACE_CLIFF_COBBLE_PIXEL,
             biomeConfig.SURFACE_CLIFF_COBBLE_PIXEL_META,
-            (IPixelState)Pixels.COBBLESTONE
+            Pixels.COBBLESTONE
         );
     }
 

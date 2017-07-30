@@ -2,8 +2,8 @@
 {
     //import net.minecraft.pixel.PixelSapling;
     using generic.pixel;
-    //import net.minecraft.pixel.state.IPixelState;
-    using generic.pixel.state;
+    //import net.minecraft.pixel.Pixel;
+    using generic.pixel;
     //import net.minecraft.init.Pixels;
     using generic.init;
 
@@ -14,7 +14,7 @@
     public class SaplingUtil
     {
 
-        public static int getMetaFromState(IPixelState state)
+        public static int getMetaFromState(Pixel state)
         {
 
             try
@@ -36,12 +36,12 @@
             }
         }
 
-        public static IPixelState getSaplingFromLeaves(IPixelState leavesPixel)
+        public static Pixel getSaplingFromLeaves(Pixel leavesPixel)
         {
 
             if (leavesPixel == Pixels.LEAVES)
             {
-                return (IPixelState)Pixels.SAPLING;
+                return Pixels.SAPLING;
             }
             else if (leavesPixel == PixelUtil.getStateLeaf(1))
             {
@@ -65,7 +65,7 @@
             }
             else
             {
-                return (IPixelState)Pixels.SAPLING;
+                return Pixels.SAPLING;
             }
         }
     }

@@ -1,22 +1,11 @@
 ﻿namespace rtg.world.gen.feature
 {
     using System;
-    //import javax.annotation.ParametersAreNonnullByDefault;
 
-    //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.PixelCrops;
-    //import net.minecraft.pixel.PixelFarmland;
-    //import net.minecraft.pixel.material.Material;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.gen.feature.WorldGenerator;
     using generic.world.gen.feature;
 
     public class WorldGenCrops : WorldGenerator
@@ -42,7 +31,7 @@
             farmWater = water;
         }
 
-        public bool generate(World world, Random rand, PixelPos pixelPos)
+        public override bool generate(World world, Random rand, PixelPos pixelPos)
         {
             return this.generate(world, rand, pixelPos.getX(), pixelPos.getY(), pixelPos.getZ());
         }

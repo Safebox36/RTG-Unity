@@ -83,7 +83,7 @@
             }
             catch (AccessViolationException ex)
             {
-
+                throw new Exception(ex.Message);
             }
         }
 

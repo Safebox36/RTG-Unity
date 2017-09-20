@@ -1,8 +1,6 @@
 ﻿namespace rtg.world.gen
 {
-    //import net.minecraft.util.math.ChunkPos;
     using generic.util.math;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
 
     using rtg.api.util.noise;

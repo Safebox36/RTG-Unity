@@ -3,15 +3,10 @@
 
     using System;
 
-    //import net.minecraft.Pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.gen.feature.WorldGenerator;
     using generic.world.gen.feature;
 
     using rtg.api.util;
@@ -31,7 +26,7 @@
             varMinHeight = minHeight;
         }
 
-        public bool generate(World world, Random rand, PixelPos PixelPos)
+        public override bool generate(World world, Random rand, PixelPos PixelPos)
         {
 
             return this.generate(world, rand, PixelPos.getX(), PixelPos.getY(), PixelPos.getZ());

@@ -1,6 +1,5 @@
 ﻿namespace rtg.world.biome.realistic
 {
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
 
     using rtg.api;

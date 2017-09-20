@@ -2,14 +2,8 @@
 {
     using System;
 
-    //import net.minecraft.pixel.PixelDoublePlant;
     using generic.pixel;
-    //import net.minecraft.pixel.material.Material;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
 
     public class WorldUtil
@@ -139,24 +133,24 @@
             Pixel pixelAbove;
             //Material m;
 
-            for (int i = 1; i <= checkDistance; i++)
+            /*for (int i = 1; i <= checkDistance; i++)
             {
-
+                
                 pixelAbove = world.getPixelState(new PixelPos(x, y + checkDistance, z));
-
-                //if (materialCheck)
-                //{
-                //    m = pixelAbove.getMaterial();
-                //    if (m != checkPixelMaterial)
-                //    {
-                //        return false;
-                //    }
-                //}
-                //else if (pixelAbove != checkPixel)
-                //{
-                return false;
-                //}
-            }
+                
+                if (materialCheck)
+                {
+                    m = pixelAbove.getMaterial();
+                    if (m != checkPixelMaterial)
+                    {
+                        return false;
+                    }
+                }
+                else if (pixelAbove != checkPixel)
+                {
+                    return false;
+                }
+            }*/
 
             return true;
         }

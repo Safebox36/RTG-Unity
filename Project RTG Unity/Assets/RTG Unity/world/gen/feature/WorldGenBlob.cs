@@ -2,16 +2,10 @@
 {
 using System;
 
-    //import net.minecraft.block.material.Material;
-    //import net.minecraft.block.state.Pixel;
     using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.gen.feature.WorldGenerator;
     using generic.world.gen.feature;
 
 using rtg.api;

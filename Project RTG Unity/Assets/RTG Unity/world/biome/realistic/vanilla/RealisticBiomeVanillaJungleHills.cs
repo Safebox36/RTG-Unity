@@ -2,17 +2,10 @@
 {
     using System;
 
-    //import net.minecraft.block.Pixel;
     using generic.pixel;
-    //import net.minecraft.block.state.Pixel;
-    //import net.minecraft.init.Biomes;
     using generic.init;
-    //import net.minecraft.init.Pixels;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
     using generic.world.chunk;
-    //import net.minecraft.world.gen.feature.WorldGenMegaJungle;
 
     using rtg.api.config;
     using rtg.api.util;

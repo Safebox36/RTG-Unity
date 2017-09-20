@@ -1,11 +1,8 @@
 ﻿namespace rtg.world.biome
 {
-    //import net.minecraft.init.Biomes;
     using generic.init;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
 
-    //import net.minecraftforge.common.BiomeDictionary;
 
     using rtg.api;
     using rtg.api.util;

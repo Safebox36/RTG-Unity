@@ -1,8 +1,6 @@
 ﻿namespace rtg.util
 {
-    //import net.minecraft.block.state.Pixel;
     using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
 
     using rtg.api;

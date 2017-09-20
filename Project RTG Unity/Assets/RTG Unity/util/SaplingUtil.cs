@@ -1,10 +1,6 @@
 ﻿namespace rtg.util
 {
-    //import net.minecraft.pixel.PixelSapling;
     using generic.pixel;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
 
     using rtg.api.util;

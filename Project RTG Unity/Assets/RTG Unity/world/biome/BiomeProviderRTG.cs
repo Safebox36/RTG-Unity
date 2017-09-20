@@ -3,20 +3,11 @@
     using System.Collections.Generic;
     using System;
 
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.WorldType;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.biome.BiomeProvider;
-    //import net.minecraft.world.gen.layer.GenLayer;
     using generic.world.gen.layer;
-    //import net.minecraft.world.gen.layer.IntCache;
 
-    //import net.minecraftforge.common.MinecraftForge;
-    //import net.minecraftforge.event.terraingen.WorldTypeEvent;
 
     using rtg.api;
     using rtg.api.util.noise;

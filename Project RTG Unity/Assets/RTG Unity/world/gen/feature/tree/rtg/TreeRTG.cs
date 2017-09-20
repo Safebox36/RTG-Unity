@@ -7,18 +7,10 @@ namespace rtg.world.gen.feature.tree.rtg
     using System.Collections.Generic;
     using System;
 
-    //import net.minecraft.Pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.Pixel.PixelLog;
-    //import net.minecraft.Pixel.material.Material;
-    //import net.minecraft.Pixel.state.Pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 /**
  * The base class for all RTG trees.

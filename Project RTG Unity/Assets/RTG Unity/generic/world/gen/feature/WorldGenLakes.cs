@@ -10,7 +10,7 @@
         }
 
         //Temporary for now, will implement a way to manipulate the pond size so as to make lakes larger.
-        public bool generate(World world, Random rand, generic.util.math.PixelPos pos)
+        public new bool generate(World world, Random rand, generic.util.math.PixelPos pos)
         {
             return base.generate(world, rand, pos);
         }

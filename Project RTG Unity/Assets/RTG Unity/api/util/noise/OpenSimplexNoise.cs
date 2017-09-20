@@ -34,25 +34,25 @@ namespace rtg.api.util.noise
          */
 
         //Alias for 1D
-        public float noise1(float x)
+        public new float noise1(float x)
         {
             return octaves[0].noise1(x);
         }
 
         //Alias for 2D
-        public float noise2(float x, float y)
+        public new float noise2(float x, float y)
         {
             return (float)octaves[0].noise(x, y);
         }
 
         //Alias for 3D
-        public float noise3(float x, float y, float z)
+        public new float noise3(float x, float y, float z)
         {
             return (float)octaves[0].noise(x, y, z);
         }
 
         //Alias for 3D (again)
-        public double improvedNoise(double x, double y, double z)
+        public new double improvedNoise(double x, double y, double z)
         {
             return octaves[0].noise(x, y, z);
         }
@@ -62,13 +62,13 @@ namespace rtg.api.util.noise
          */
 
         //2D OpenSimplex noise (KdotJPG)
-        public double noise(double x, double y)
+        public new double noise(double x, double y)
         {
             return octaves[0].noise(x, y);
         }
 
         //3D OpenSimplex Noise (DigitalShadow)
-        public double noise(double x, double y, double z)
+        public new double noise(double x, double y, double z)
         {
             return octaves[0].noise(x, y, z);
         }

@@ -1,9 +1,6 @@
 ﻿namespace generic.pixel.pattern
 {
     using System;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.pixel.Pixel;
     using generic.pixel;
 
     public class PixelMatcher : Pixel

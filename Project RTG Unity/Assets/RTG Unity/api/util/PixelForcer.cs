@@ -1,12 +1,8 @@
 ﻿namespace rtg.api.util
 {
-    //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     /**

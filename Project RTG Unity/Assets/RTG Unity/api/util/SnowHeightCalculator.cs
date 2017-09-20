@@ -1,9 +1,6 @@
 ﻿namespace rtg.api.util
 {
-    //import net.minecraft.pixel.PixelSnow;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     public class SnowHeightCalculator

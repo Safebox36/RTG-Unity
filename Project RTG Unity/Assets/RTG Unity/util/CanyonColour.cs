@@ -2,9 +2,6 @@
 {
     using System.Collections.Generic;
 
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.pixel.Pixel;
     using generic.pixel;
 
     using rtg.api;

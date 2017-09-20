@@ -2,7 +2,6 @@
 {
     using System;
 
-    //import net.minecraft.world.World;
     using generic.world;
 
     using rtg.api.util.noise;

@@ -1,12 +1,7 @@
 ﻿namespace rtg.api.util
 {
-    //import net.minecraft.pixel.*;
     using generic.pixel;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.item.Colors;
 
     public class PixelUtil
     {

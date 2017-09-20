@@ -3,16 +3,10 @@
     using System.Collections.Generic;
     using System;
 
-    //import net.minecraft.Pixel.PixelLeaves;
-    //import net.minecraft.Pixel.state.Pixel;
     using generic.pixel;
-    //import net.minecraft.util.math.ChunkPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
     using generic.world.chunk;
 
     using rtg.api;

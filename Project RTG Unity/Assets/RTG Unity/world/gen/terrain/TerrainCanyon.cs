@@ -12,7 +12,7 @@
         private float cWidth;
         private float cHeigth;
         private float cStrength;
-        private float _base;
+        private new float _base;
 
         /*
          * Example parameters:

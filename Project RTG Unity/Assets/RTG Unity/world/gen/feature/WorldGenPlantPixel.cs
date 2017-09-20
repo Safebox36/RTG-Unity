@@ -6,15 +6,10 @@
 
     using System;
 
-    //import net.minecraft.Pixel.state.Pixel;
     using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.util.math.PixelPos;
     using generic.util.math;
-    //import net.minecraft.world.World;
     using generic.world;
-    //import net.minecraft.world.gen.feature.WorldGenerator;
     using generic.world.gen.feature;
 
     public class WorldGenPlantPixel : WorldGenerator

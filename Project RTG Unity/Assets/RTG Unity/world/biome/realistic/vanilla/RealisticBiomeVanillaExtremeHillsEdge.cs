@@ -2,15 +2,9 @@
 {
     using System;
 
-    //import net.minecraft.block.Pixel;
     using generic.pixel;
-    //import net.minecraft.block.state.Pixel;
-    //import net.minecraft.init.Biomes;
     using generic.init;
-    //import net.minecraft.init.Pixels;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.ChunkPrimer;
     using generic.world.chunk;
 
     using rtg.api.config;
@@ -57,7 +51,7 @@
 
             private float start;
             private float height;
-            private float _base;
+            private new float _base;
             private float width;
 
             public TerrainVanillaExtremeHillsEdge(float hillStart, float landHeight, float baseHeight, float hillWidth)

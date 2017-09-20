@@ -2,15 +2,9 @@
 {
     using System;
 
-    //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api.world;
@@ -20,8 +14,8 @@
     public class SurfaceRiverBOPCrag : SurfaceBase
     {
 
-        private Pixel topPixel;
-        private Pixel fillerPixel;
+        private new Pixel topPixel;
+        private new Pixel fillerPixel;
         private Pixel cliffPixel1;
         private Pixel cliffPixel2;
 

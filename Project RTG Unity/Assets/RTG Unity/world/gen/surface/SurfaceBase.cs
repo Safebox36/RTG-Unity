@@ -1,14 +1,8 @@
 ﻿namespace rtg.world.gen.surface
 {
-    //import net.minecraft.pixel.Pixel;
     using generic.pixel;
-    //import net.minecraft.pixel.Pixel;
-    using generic.pixel;
-    //import net.minecraft.init.Pixels;
     using generic.init;
-    //import net.minecraft.world.biome.Biome;
     using generic.world.biome;
-    //import net.minecraft.world.chunk.Chunk;
     using generic.world.chunk;
 
     using rtg.api;

@@ -1,11 +1,10 @@
 ﻿namespace rtg.api.config
 {
-    using UnityEngine;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using generic.init;
 
-    public class RTGConfig : MonoBehaviour
+    public class RTGConfig
     {
         // Maximum tree density.
         public static readonly float MAX_TREE_DENSITY = 5f;
@@ -28,11 +27,9 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Bedrock
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-        [Range(0, 5)]
+        
         public int FLAT_BEDROCK_LAYERS = 0;
         public int BEDROCK_PIXEL_ID = Pixels.BEDROCK.getPixelID();
-        [Range(0, 15)]
         public int BEDROCK_PIXEL_BYTE = 0;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,7 +38,6 @@
 
         public bool ENABLE_RTG_BIOME_DECORATIONS = true;
         public bool ENABLE_RTG_BIOME_SURFACES = true;
-        [Range(-1, 255)]
         public int PATCH_BIOME_ID = 1;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,7 +45,6 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public bool ENABLE_COBBLESTONE_BOULDERS = true;
-        [Range(1, 100)]
         public int COBBLESTONE_BOULDER_CHANCE = 1;
         //public bool ENABLE_UBC_BOULDERS;
 
@@ -59,9 +54,7 @@
 
         public bool ENABLE_CAVE_MODIFICATIONS = true;
         public bool ENABLE_CAVES = true;
-        [Range(1, 40)]
         public int CAVE_DENSITY = 8;
-        [Range(1, 40)]
         public int CAVE_FREQUENCY = 16;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -74,8 +67,7 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Dunes
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-            [Range(1,12)]
+        
         public int DUNE_HEIGHT = 4;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,7 +75,6 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public bool GENERATE_DUNGEONS = true;
-        [Range(1,200)]
         public int DUNGEON_FREQUENCY = 8;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,9 +82,7 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public bool ENABLE_FLOWING_LIQUID_MODIFICATIONS = true;
-        [Range(0, int.MaxValue)]
         public int FLOWING_LAVA_CHANCE = 200;
-        [Range(0, int.MaxValue)]
         public int FLOWING_WATER_CHANCE = 200;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -105,16 +94,11 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Lakes (Scenic)
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-            [Range(0,10)]
+        
         private float LAKE_SIZE_MULTIPLIER = 1; // This is private because we want a transformed version.
-        [Range(0, 10)]
         public float LAKE_FREQUENCY_MULTIPLIER = 1;
-        [Range(0, 2)]
         public float LAKE_SHORE_BENDINESS_MULTIPLIER = 1;
-        [Range(0, 254)]
         public int SCENIC_LAKE_BIOME_ID = 7;
-        [Range(0, 254)]
         public int SCENIC_FROZEN_LAKE_BIOME_ID = 11;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,10 +106,8 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public bool ENABLE_WATER_SURFACE_LAKES = true;
-        [Range(1, 100)]
         public int WATER_SURFACE_LAKE_CHANCE = 10;
         public bool ENABLE_LAVA_SURFACE_LAKES = true;
-        [Range(1, 100)]
         public int LAVA_SURFACE_LAKE_CHANCE = 10;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -133,10 +115,8 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public bool ENABLE_WATER_UNDERGROUND_LAKES = true;
-        [Range(1, 100)]
         public int WATER_UNDERGROUND_LAKE_CHANCE = 10;
         public bool ENABLE_LAVA_UNDERGROUND_LAKES = true;
-        [Range(1, 100)]
         public int LAVA_UNDERGROUND_LAKE_CHANCE = 10;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -183,7 +163,6 @@
         public string MESA_GRADIENT_STRING = "0,1,8,14,1,8";
         public string SAVANNA_GRADIENT_STRING = "0,0,0,0,8,8,12,12,8,0,8,12,12,8,12,8,0,0,8,12,12";
         public int PLATEAU_PIXEL_ID = Pixels.HARDENED_CLAY.getPixelID();
-        [Range(0,15)]
         public int PLATEAU_PIXEL_META = 0;
         public bool STONE_SAVANNAS = true;
 
@@ -193,22 +172,16 @@
 
         //public bool ENABLE_RAVINE_MODIFICATIONS;
         public bool ENABLE_RAVINES = false;
-        [Range(1,100)]
         public int RAVINE_FREQUENCY = 50;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Rivers
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-            [Range(0,10)]
+        
         private float RIVER_SIZE_MULTIPLIER = 1; // This is private because we want a transformed version.
-        [Range(0,10)]
         public float RIVER_FREQUENCY_MULTIPLIER = 1;
-        [Range(0,2)]
         public float RIVER_BENDINESS_MULTIPLIER = 1;
-        [Range(50,5000)]
         public float RIVER_CUT_OFF_SCALE = 350;
-        [Range(0,2)]
         public float RIVER_CUT_OFF_AMPLITUDE = 0.5f;
         public bool ENABLE_LUSH_RIVER_BANK_DECORATIONS_IN_HOT_BIOMES = true;
         public bool ENABLE_LUSH_RIVER_BANK_SURFACES_IN_HOT_BIOMES = true;
@@ -218,7 +191,6 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public bool ENABLE_RTG_SAPLINGS = true;
-        [Range(1,int.MaxValue)]
         public int RTG_TREE_CHANCE = 2;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,9 +199,7 @@
 
         public bool ENABLE_SCATTERED_FEATURE_MODIFICATIONS = true;
         public bool GENERATE_SCATTERED_FEATURES = true;
-        [Range(2, int.MaxValue)]
         public int MIN_DISTANCE_SCATTERED_FEATURES = 12;
-        [Range(4, int.MaxValue)]
         public int MAX_DISTANCE_SCATTERED_FEATURES = 48;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -244,11 +214,8 @@
 
         //public bool ENABLE_STRONGHOLD_MODIFICATIONS;
         public bool GENERATE_STRONGHOLDS = true;
-        [Range(1, int.MaxValue)]
         public int STRONGHOLD_COUNT = 128;
-        [Range(1, int.MaxValue)]
         public int STRONGHOLD_DISTANCE = 32;
-        [Range(1, int.MaxValue)]
         public int STRONGHOLD_SPREAD = 3;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -277,11 +244,8 @@
 
         //public bool ENABLE_VILLAGE_MODIFICATIONS;
         public bool GENERATE_VILLAGES = true;
-        [Range(0, 10)]
         public int VILLAGE_SIZE = 0;
-        [Range(1, int.MaxValue)]
         public int MIN_DISTANCE_VILLAGES = 12;
-        [Range(1, int.MaxValue)]
         public int MAX_DISTANCE_VILLAGES = 48;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -289,20 +253,15 @@
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         public int VOLCANO_PIXEL_ID = Pixels.OBSIDIAN.getPixelID();
-        [Range(0, 15)]
         public int VOLCANO_PIXEL_META = 0;
         public int VOLCANO_MIX1_PIXEL_ID = Pixels.COBBLESTONE.getPixelID();
-        [Range(0, 15)]
         public int VOLCANO_MIX1_PIXEL_META = 0;
         public int VOLCANO_MIX2_PIXEL_ID = Pixels.GRAVEL.getPixelID();
-        [Range(0, 15)]
         public int VOLCANO_MIX2_PIXEL_META = 0;
         public int VOLCANO_MIX3_PIXEL_ID = Pixels.COAL_PIXEL.getPixelID();
-        [Range(0, 15)]
         public int VOLCANO_MIX3_PIXEL_META = 0;
         public bool ENABLE_VOLCANOES = true;
         public bool ENABLE_VOLCANO_ERUPTIONS = true;
-        [Range(1, int.MaxValue)]
         public int VOLCANO_CHANCE = 48;
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

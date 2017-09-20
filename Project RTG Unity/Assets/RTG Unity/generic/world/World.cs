@@ -3,7 +3,7 @@
     using System;
     using UnityEngine;
 
-    public class World : MonoBehaviour
+    public class World
     {
         //Variables
         public struct pixelData
@@ -44,7 +44,6 @@
         }
 
         public int levelSeed = (int)DateTime.Now.Ticks;
-        [Tooltip("Warning: Values higher than 2048 are not recommended.")]
         public Vector2 worldSize = new Vector2(15, 15);
         internal System.Random rand;
 
